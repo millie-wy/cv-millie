@@ -3,8 +3,6 @@
 body {
   margin: 0;
   font-family: "Cabin";
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   color: "#3c3c3c";
   box-sizing: border-box;
 }
