@@ -4,39 +4,17 @@ import {
   GitHub,
   LinkedIn,
 } from "@mui/icons-material";
-import { Box, Container, createTheme, Typography } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import hkbg1 from "../../Media/Images/hkbg1.webp";
 import hkbg2 from "../../Media/Images/hkbg2.webp";
 import hkbg3 from "../../Media/Images/hkbg3.webp";
 import hkbg4 from "../../Media/Images/hkbg4.webp";
+import { useTheme } from "../Contexts/ThemeContextProvider";
 
 const Home = () => {
-  const [background, setBackground] = useState({
-    href: "",
-    author: "",
-    link: "",
-    source: "",
-  });
-
-  const theme = createTheme({
-    typography: {
-      fontFamily: ["Cabin", "Cabin Condensed", "Cabin Sketch"].join(","),
-    },
-  });
-
-  theme.typography.h4 = {
-    fontFamily: "Cabin Sketch",
-    fontSize: "2.5rem",
-    textTransform: "uppercase",
-    color: "#3c3c3c",
-  };
-
-  theme.typography.body1 = {
-    fontFamily: "Cabin",
-    fontSize: "1rem",
-    color: "#3c3c3c",
-  };
+  const { theme } = useTheme();
+  const [background, setBackground] = useState({});
 
   const links = [
     {
@@ -151,7 +129,7 @@ const Home = () => {
               Millie Cheung
             </Typography>
 
-            <Typography theme={theme}>
+            <Typography variant="body1" theme={theme}>
               A{" "}
               <span
                 style={{
