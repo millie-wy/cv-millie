@@ -6,7 +6,7 @@ import Header from "./Header";
 const Layout = () => {
   window.scrollTo(0, 0);
   return (
-    <Box>
+    <Box sx={{ position: "relative" }}>
       <Header />
       <Outlet />
       <Footer />
