@@ -1,9 +1,19 @@
 import { Box, Typography } from "@mui/material";
+import { useEffect, useState } from "react";
 import people from "../../../Media/Icons/people.png";
 import { useTheme } from "../../Contexts/ThemeContextProvider";
 
 const Friends = () => {
   const { theme } = useTheme();
+  const [display, setDisplay] = useState(false);
+
+  useEffect(() => {
+    const displayElement = () => {
+      window.scrollY > 607 ? setDisplay(true) : setDisplay(false);
+    };
+    window.addEventListener("scroll", displayElement, { passive: true });
+    return () => window.removeEventListener("scroll", displayElement);
+  });
 
   return (
     <Box
@@ -11,8 +21,11 @@ const Friends = () => {
         pl: { xs: "1.5rem", sm: "2rem" },
         height: "fit-content",
         pb: "100px",
-        display: "flex",
         flexWrap: "wrap",
+        display: "flex",
+        zIndex: display ? 99 : 0,
+        opacity: display ? 100 : 0,
+        transition: "all .5s ease-in-out",
       }}
     >
       <Typography

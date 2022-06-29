@@ -1,9 +1,19 @@
 import { Box, Typography } from "@mui/material";
+import { useEffect, useState } from "react";
 import coding from "../../../Media/Icons/coding.png";
 import { useTheme } from "../../Contexts/ThemeContextProvider";
 
 const Coding = () => {
   const { theme } = useTheme();
+  const [display, setDisplay] = useState(false);
+
+  useEffect(() => {
+    const displayElement = () => {
+      window.scrollY > 986 ? setDisplay(true) : setDisplay(false);
+    };
+    window.addEventListener("scroll", displayElement, { passive: true });
+    return () => window.removeEventListener("scroll", displayElement);
+  });
 
   return (
     <Box
@@ -12,6 +22,9 @@ const Coding = () => {
         position: "relative",
         height: "fit-content",
         pb: "100px",
+        zIndex: display ? 99 : 0,
+        opacity: display ? 100 : 0,
+        transition: "all .5s ease-in-out",
       }}
     >
       <Box

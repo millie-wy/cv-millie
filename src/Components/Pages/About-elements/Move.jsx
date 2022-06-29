@@ -1,11 +1,21 @@
 import { Box, Typography } from "@mui/material";
-import sweden from "../../../Media/Icons/sweden.png";
+import { useEffect, useState } from "react";
 import hongkong from "../../../Media/Icons/hongkong.png";
 import moving from "../../../Media/Icons/moving.png";
+import sweden from "../../../Media/Icons/sweden.png";
 import { useTheme } from "../../Contexts/ThemeContextProvider";
 
 const Move = () => {
   const { theme } = useTheme();
+  const [display, setDisplay] = useState(false);
+
+  useEffect(() => {
+    const displayElement = () => {
+      window.scrollY > 834 ? setDisplay(true) : setDisplay(false);
+    };
+    window.addEventListener("scroll", displayElement, { passive: true });
+    return () => window.removeEventListener("scroll", displayElement);
+  });
 
   return (
     <Box
@@ -14,6 +24,11 @@ const Move = () => {
         position: "relative",
         height: "fit-content",
         pb: "100px",
+        display: "flex",
+        flexDirection: "column",
+        zIndex: display ? 99 : 0,
+        opacity: display ? 100 : 0,
+        transition: "all .5s ease-in-out",
       }}
     >
       <Box

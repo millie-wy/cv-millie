@@ -1,8 +1,18 @@
 import { Box, Typography } from "@mui/material";
+import { useEffect, useState } from "react";
 import { useTheme } from "../../Contexts/ThemeContextProvider";
 
 const Tbc = () => {
   const { theme } = useTheme();
+  const [display, setDisplay] = useState(false);
+
+  useEffect(() => {
+    const displayElement = () => {
+      window.scrollY > 1128 ? setDisplay(true) : setDisplay(false);
+    };
+    window.addEventListener("scroll", displayElement, { passive: true });
+    return () => window.removeEventListener("scroll", displayElement);
+  });
 
   return (
     <Box
@@ -10,6 +20,9 @@ const Tbc = () => {
         pl: { xs: "1.5rem", sm: "2rem" },
         position: "relative",
         height: "fit-content",
+        zIndex: display ? 99 : 0,
+        opacity: display ? 100 : 0,
+        transition: "all .5s ease-in-out",
       }}
     >
       <Box

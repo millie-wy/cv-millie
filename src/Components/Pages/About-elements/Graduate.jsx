@@ -1,9 +1,19 @@
 import { Box, Typography } from "@mui/material";
+import { useEffect, useState } from "react";
 import graduated from "../../../Media/Icons/graduated.png";
 import { useTheme } from "../../Contexts/ThemeContextProvider";
 
 const Graduate = () => {
   const { theme } = useTheme();
+  const [display, setDisplay] = useState(false);
+
+  useEffect(() => {
+    const displayElement = () => {
+      window.scrollY > 5 ? setDisplay(true) : setDisplay(false);
+    };
+    window.addEventListener("scroll", displayElement, { passive: true });
+    return () => window.removeEventListener("scroll", displayElement);
+  });
 
   return (
     <Box
@@ -12,6 +22,9 @@ const Graduate = () => {
         position: "relative",
         height: "fit-content",
         pb: "100px",
+        zIndex: display ? 99 : 0,
+        opacity: display ? 100 : 0,
+        transition: "all .5s ease-in-out",
       }}
     >
       <Box

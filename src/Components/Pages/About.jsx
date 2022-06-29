@@ -16,11 +16,14 @@ import Travel from "./About-elements/Travel";
 const About = () => {
   const { theme } = useTheme();
   const [maskTop, setMaskTop] = useState(34);
+  const [display, setDisplay] = useState(false);
 
   useEffect(() => {
     const adjustMaskTop = () => {
       console.log(window.scrollY);
       let y = window.scrollY;
+      y > 5 ? setDisplay(true) : setDisplay(false);
+
       y < 11.5
         ? setMaskTop(34)
         : y <= 400
@@ -32,7 +35,7 @@ const About = () => {
   });
 
   return (
-    <Container sx={{ py: "4rem", background: "#ECF1F5" }}>
+    <Container sx={{ py: "4rem", background: "#ECF1F5", minHeight: 2000 }}>
       {/* background color for header */}
       <Box
         sx={{
@@ -69,6 +72,8 @@ const About = () => {
           flexDirection: "row",
           py: "20px",
           position: "relative",
+          opacity: display ? 100 : 0,
+          transition: "all .5s ease-in-out",
         }}
       >
         <Box
