@@ -17,9 +17,28 @@ const ThemeProvider = (props) => {
     color: "#3c3c3c",
   };
 
+  theme.typography.h6 = {
+    fontFamily: "Cabin Sketch",
+    fontSize: "1.6rem",
+    color: "#3c3c3c",
+  };
+
+  theme.typography.subtitle1 = {
+    fontFamily: "Cabin",
+    fontSize: "1.2rem",
+    color: "#3c3c3c",
+  };
+
   theme.typography.body1 = {
     fontFamily: "Cabin",
     fontSize: "1rem",
+    color: "#3c3c3c",
+  };
+
+  theme.typography.body2 = {
+    fontFamily: "Cabin",
+    fontWeight: "400",
+    fontSize: ".9rem",
     color: "#3c3c3c",
   };
 
