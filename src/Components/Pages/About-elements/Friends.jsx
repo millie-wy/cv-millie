@@ -1,5 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
+import { displayElement } from "../../../Helper";
 import people from "../../../Media/Icons/people.png";
 import { useTheme } from "../../Contexts/ThemeContextProvider";
 
@@ -8,11 +9,9 @@ const Friends = () => {
   const [display, setDisplay] = useState(false);
 
   useEffect(() => {
-    const displayElement = () => {
-      window.scrollY > 607 ? setDisplay(true) : setDisplay(false);
-    };
     window.addEventListener("scroll", displayElement, { passive: true });
-    return () => window.removeEventListener("scroll", displayElement);
+    return () =>
+      window.removeEventListener("scroll", setDisplay(displayElement(607)));
   });
 
   return (

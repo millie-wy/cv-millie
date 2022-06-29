@@ -1,5 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
+import { displayElement } from "../../../Helper";
 import { useTheme } from "../../Contexts/ThemeContextProvider";
 
 const Tbc = () => {
@@ -7,11 +8,9 @@ const Tbc = () => {
   const [display, setDisplay] = useState(false);
 
   useEffect(() => {
-    const displayElement = () => {
-      window.scrollY > 1128 ? setDisplay(true) : setDisplay(false);
-    };
     window.addEventListener("scroll", displayElement, { passive: true });
-    return () => window.removeEventListener("scroll", displayElement);
+    return () =>
+      window.removeEventListener("scroll", setDisplay(displayElement(1128)));
   });
 
   return (

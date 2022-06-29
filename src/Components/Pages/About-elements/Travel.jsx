@@ -1,5 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
+import { displayElement } from "../../../Helper";
 import flight from "../../../Media/Icons/flight.png";
 import { useTheme } from "../../Contexts/ThemeContextProvider";
 
@@ -8,11 +9,9 @@ const Travel = () => {
   const [display, setDisplay] = useState(false);
 
   useEffect(() => {
-    const displayElement = () => {
-      window.scrollY > 723 ? setDisplay(true) : setDisplay(false);
-    };
     window.addEventListener("scroll", displayElement, { passive: true });
-    return () => window.removeEventListener("scroll", displayElement);
+    return () =>
+      window.removeEventListener("scroll", setDisplay(displayElement(723)));
   });
 
   return (
