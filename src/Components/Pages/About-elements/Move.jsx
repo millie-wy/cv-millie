@@ -9,6 +9,7 @@ import { useTheme } from "../../Contexts/ThemeContextProvider";
 const Move = () => {
   const { theme } = useTheme();
   const [display, setDisplay] = useState(false);
+  const [truckRight, setTruckRight] = useState(40);
 
   useEffect(() => {
     window.addEventListener("scroll", displayElement, { passive: true });
@@ -16,8 +17,25 @@ const Move = () => {
       window.removeEventListener("scroll", setDisplay(displayElement(834)));
   });
 
+  useEffect(() => {
+    // not done
+    const updateCruiseLeft = () => {
+      const parent = document.getElementById("move-div");
+      const scrollPercent = (window.scrollY - 834) / parent.clientHeight;
+
+      // console.log(window.scrollY - 834);
+      // console.log(parent.clientHeight); // 214 px
+      // console.log(scrollPercent);
+      let right = scrollPercent * parent.clientWidth;
+      right > 40 ? setTruckRight(right) : setTruckRight(40);
+    };
+    window.addEventListener("scroll", updateCruiseLeft, { passive: true });
+    return () => window.removeEventListener("scroll", updateCruiseLeft);
+  });
+
   return (
     <Box
+      id="move-div"
       sx={{
         pl: { xs: "1.5rem", sm: "2rem" },
         position: "relative",
@@ -69,6 +87,7 @@ const Move = () => {
           width: { xs: "70px", sm: "80px", md: "90px" },
           WebkitTransform: "scaleX(-1)",
           mt: "-33px",
+          right: truckRight,
         }}
       />
       <Typography

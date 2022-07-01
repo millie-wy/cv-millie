@@ -41,6 +41,7 @@ const About = () => {
         py: "4rem",
         background: "#ECF1F5",
         minHeight: 2075,
+        overflow: "hidden",
       }}
     >
       {/* background color for header */}
