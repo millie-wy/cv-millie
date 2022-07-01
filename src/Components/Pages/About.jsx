@@ -20,22 +20,29 @@ const About = () => {
 
   useEffect(() => {
     const adjustMaskTop = () => {
-      console.log(window.scrollY);
-      let y = window.scrollY;
-      y > 5 ? setDisplay(true) : setDisplay(false);
+      const y = window.scrollY;
+      const winH = window.innerHeight;
+      const docH = document.body.offsetHeight;
+      const containerH = document.getElementById("main").clientHeight;
 
-      y < 11.5
-        ? setMaskTop(34)
-        : y <= 400
-        ? setMaskTop(y * 1.45)
-        : setMaskTop(y * 1.4);
+      window.scrollY > 3 ? setDisplay(true) : setDisplay(false);
+
+      let scrollPercent = y / (docH - winH);
+      setMaskTop(scrollPercent * containerH);
     };
     window.addEventListener("scroll", adjustMaskTop, { passive: true });
     return () => window.removeEventListener("scroll", adjustMaskTop);
   });
 
   return (
-    <Container sx={{ py: "4rem", background: "#ECF1F5", minHeight: 2000 }}>
+    <Container
+      maxWidth={false}
+      sx={{
+        py: "4rem",
+        background: "#ECF1F5",
+        minHeight: 2075,
+      }}
+    >
       {/* background color for header */}
       <Box
         sx={{
@@ -56,7 +63,6 @@ const About = () => {
         <Typography variant="h6" theme={theme} textAlign="center">
           Scroll down to see my life journey!
         </Typography>
-        {/* <DownArrow fontSize="large" sx={{ pt: "1rem", pb: "5rem" }} /> */}
         <DownArrow>
           <KeyboardDoubleArrowDownRoundedIcon
             color="#3c3c3c"
@@ -67,6 +73,7 @@ const About = () => {
       </Box>
 
       <Box
+        id="main"
         sx={{
           display: "flex",
           flexDirection: "row",
@@ -74,6 +81,7 @@ const About = () => {
           position: "relative",
           opacity: display ? 100 : 0,
           transition: "all .5s ease-in-out",
+          scrollBehavior: "smooth",
         }}
       >
         <Box
@@ -85,7 +93,6 @@ const About = () => {
             left: -10,
             right: 0,
             zIndex: 98,
-            scrollBehavior: "smooth",
           }}
         />
 
