@@ -28,7 +28,9 @@ const About = () => {
       window.scrollY > 3 ? setDisplay(true) : setDisplay(false);
 
       let scrollPercent = y / (docH - winH);
-      setMaskTop(scrollPercent * containerH);
+      scrollPercent > 0.95
+        ? setMaskTop(containerH)
+        : setMaskTop(scrollPercent * containerH);
     };
     window.addEventListener("scroll", adjustMaskTop, { passive: true });
     return () => window.removeEventListener("scroll", adjustMaskTop);
@@ -40,8 +42,9 @@ const About = () => {
       sx={{
         py: "4rem",
         background: "#ECF1F5",
-        minHeight: 2075,
+        height: 2100,
         overflow: "hidden",
+        scrollBehavior: "smooth",
       }}
     >
       {/* background color for header */}

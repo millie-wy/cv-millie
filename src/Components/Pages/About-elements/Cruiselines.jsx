@@ -12,7 +12,7 @@ const Cruiselines = () => {
   useEffect(() => {
     window.addEventListener("scroll", displayElement, { passive: true });
     return () =>
-      window.removeEventListener("scroll", setDisplay(displayElement(400)));
+      window.removeEventListener("scroll", setDisplay(displayElement(480)));
   });
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const Cruiselines = () => {
       const parent = document.getElementById("cruise-div");
       const scrollPercent = Math.min(
         1,
-        (window.scrollY - 400) / parent.clientHeight
+        ((window.scrollY - 520) / parent.clientHeight) * 0.1
       );
       let left = scrollPercent * parent.clientWidth;
       left > 20 ? setCruiseLeft(left) : setCruiseLeft(20);
@@ -34,8 +34,7 @@ const Cruiselines = () => {
       id="cruise-div"
       sx={{
         pl: { xs: "1.5rem", sm: "2rem" },
-        height: "fit-content",
-        pb: "240px",
+        height: 220,
         zIndex: display ? 99 : 0,
         opacity: display ? 100 : 0,
         transition: "all .5s ease-in-out",

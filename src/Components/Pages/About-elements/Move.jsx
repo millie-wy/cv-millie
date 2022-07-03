@@ -14,20 +14,19 @@ const Move = () => {
   useEffect(() => {
     window.addEventListener("scroll", displayElement, { passive: true });
     return () =>
-      window.removeEventListener("scroll", setDisplay(displayElement(834)));
+      window.removeEventListener("scroll", setDisplay(displayElement(900)));
   });
 
   useEffect(() => {
     // not done
     const updateCruiseLeft = () => {
       const parent = document.getElementById("move-div");
-      const scrollPercent = (window.scrollY - 834) / parent.clientHeight;
+      const scrollPercent =
+        ((window.scrollY - 800) / parent.clientHeight) * 0.5;
 
-      // console.log(window.scrollY - 834);
-      // console.log(parent.clientHeight); // 214 px
-      // console.log(scrollPercent);
       let right = scrollPercent * parent.clientWidth;
       right > 40 ? setTruckRight(right) : setTruckRight(40);
+      // add end position of the truck
     };
     window.addEventListener("scroll", updateCruiseLeft, { passive: true });
     return () => window.removeEventListener("scroll", updateCruiseLeft);
@@ -39,8 +38,7 @@ const Move = () => {
       sx={{
         pl: { xs: "1.5rem", sm: "2rem" },
         position: "relative",
-        height: "fit-content",
-        pb: "100px",
+        height: 200,
         display: "flex",
         flexDirection: "column",
         zIndex: display ? 99 : 0,
@@ -55,7 +53,7 @@ const Move = () => {
           position: "absolute",
           width: { xs: "40px", sm: "50px", md: "60px" },
           left: { xs: "-75px", sm: "-85px", md: "-95px" },
-          top: "-10px",
+
           mt: "-10px",
         }}
       />

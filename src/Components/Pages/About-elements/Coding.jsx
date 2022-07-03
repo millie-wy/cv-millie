@@ -11,15 +11,14 @@ const Coding = () => {
   useEffect(() => {
     window.addEventListener("scroll", displayElement, { passive: true });
     return () =>
-      window.removeEventListener("scroll", setDisplay(displayElement(986)));
+      window.removeEventListener("scroll", setDisplay(displayElement(1210)));
   });
   return (
     <Box
       sx={{
         pl: { xs: "1.5rem", sm: "2rem" },
         position: "relative",
-        height: "fit-content",
-        pb: "100px",
+        height: 180,
         zIndex: display ? 99 : 0,
         opacity: display ? 100 : 0,
         transition: "all .5s ease-in-out",

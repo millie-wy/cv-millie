@@ -11,17 +11,16 @@ const Travel = () => {
   useEffect(() => {
     window.addEventListener("scroll", displayElement, { passive: true });
     return () =>
-      window.removeEventListener("scroll", setDisplay(displayElement(723)));
+      window.removeEventListener("scroll", setDisplay(displayElement(830)));
   });
 
   return (
     <Box
       sx={{
         pl: { xs: "1.5rem", sm: "2rem" },
-        height: "fit-content",
-        pb: "100px",
+        height: 260,
         display: "flex",
-        flexWrap: "wrap",
+        flexDirection: { xs: "column", sm: "row" },
         zIndex: display ? 99 : 0,
         opacity: display ? 100 : 0,
         transition: "all .5s ease-in-out",
@@ -42,7 +41,8 @@ const Travel = () => {
         component="img"
         src={flight}
         sx={{
-          width: "60px",
+          width: 60,
+          height: 60,
           pt: { xs: ".5rem", sm: 0 },
         }}
       />

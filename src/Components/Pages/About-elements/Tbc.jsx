@@ -10,7 +10,7 @@ const Tbc = () => {
   useEffect(() => {
     window.addEventListener("scroll", displayElement, { passive: true });
     return () =>
-      window.removeEventListener("scroll", setDisplay(displayElement(1128)));
+      window.removeEventListener("scroll", setDisplay(displayElement(1300)));
   });
 
   return (
@@ -18,7 +18,7 @@ const Tbc = () => {
       sx={{
         pl: { xs: "1.5rem", sm: "2rem" },
         position: "relative",
-        height: "fit-content",
+        height: 20,
         zIndex: display ? 99 : 0,
         opacity: display ? 100 : 0,
         transition: "all .5s ease-in-out",

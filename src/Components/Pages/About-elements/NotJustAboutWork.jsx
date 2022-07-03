@@ -11,17 +11,16 @@ const NotJustAboutWork = () => {
   useEffect(() => {
     window.addEventListener("scroll", displayElement, { passive: true });
     return () =>
-      window.removeEventListener("scroll", setDisplay(displayElement(283)));
+      window.removeEventListener("scroll", setDisplay(displayElement(340)));
   });
 
   return (
     <Box
       sx={{
         pl: { xs: "1.5rem", sm: "2rem" },
-        height: "fit-content",
-        pb: "100px",
-        flexWrap: "wrap",
+        height: 180,
         display: "flex",
+        flexDirection: { xs: "column", sm: "row" },
         zIndex: display ? 99 : 0,
         opacity: display ? 100 : 0,
         transition: "all .5s ease-in-out",
@@ -42,7 +41,8 @@ const NotJustAboutWork = () => {
         component="img"
         src={busy}
         sx={{
-          width: "60px",
+          width: 60,
+          height: 60,
           pt: { xs: ".5rem", sm: 0 },
         }}
       />
