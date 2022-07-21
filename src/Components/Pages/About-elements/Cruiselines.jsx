@@ -56,7 +56,6 @@ const Cruiselines = () => {
         src={cruise}
         sx={{
           position: "absolute",
-          // width: { xs: "120px", sm: "140px", md: "160px" },
           width: "140px",
           zIndex: -1,
           left: cruiseLeft,

@@ -9,7 +9,7 @@ import { useTheme } from "../../Contexts/ThemeContextProvider";
 const Move = () => {
   const { theme } = useTheme();
   const [display, setDisplay] = useState(false);
-  const [truckRight, setTruckRight] = useState(40);
+  const [truckRight, setTruckRight] = useState();
 
   useEffect(() => {
     window.addEventListener("scroll", displayElement, { passive: true });
@@ -18,25 +18,35 @@ const Move = () => {
   });
 
   useEffect(() => {
-    // not done
-    const updateCruiseLeft = () => {
+    const updateTruckRight = () => {
       const parent = document.getElementById("move-div");
-      const scrollPercent =
-        ((window.scrollY - 800) / parent.clientHeight) * 0.5;
+      const aniContainer = document.getElementById("truck-ani-div");
+      const scrollPercent = Math.min(
+        1,
+        (window.scrollY - 1000) / parent.clientHeight
+      );
 
-      let right = scrollPercent * parent.clientWidth;
-      right > 40 ? setTruckRight(right) : setTruckRight(40);
-      // add end position of the truck
+      let truckPos = scrollPercent * aniContainer.offsetWidth;
+
+      let left =
+        scrollPercent *
+        (aniContainer.offsetWidth -
+          document.getElementById("truck").clientWidth);
+
+      if (scrollPercent > 0) {
+        setTruckRight(left);
+      }
+
+      // position of the truck and flag elements to be done, moving speed as well
     };
-    window.addEventListener("scroll", updateCruiseLeft, { passive: true });
-    return () => window.removeEventListener("scroll", updateCruiseLeft);
+    window.addEventListener("scroll", updateTruckRight, { passive: true });
+    return () => window.removeEventListener("scroll", updateTruckRight);
   });
 
   return (
     <Box
       id="move-div"
       sx={{
-        pl: { xs: "1.5rem", sm: "2rem" },
         position: "relative",
         height: 200,
         display: "flex",
@@ -44,19 +54,9 @@ const Move = () => {
         zIndex: display ? 99 : 0,
         opacity: display ? 100 : 0,
         transition: "all .5s ease-in-out",
+        background: "yellow",
       }}
     >
-      <Box
-        component="img"
-        src={sweden}
-        sx={{
-          position: "absolute",
-          width: { xs: "40px", sm: "50px", md: "60px" },
-          left: { xs: "-75px", sm: "-85px", md: "-95px" },
-
-          mt: "-10px",
-        }}
-      />
       <Box
         sx={{
           background: "#3c3c3c",
@@ -68,30 +68,58 @@ const Move = () => {
         }}
       />
       <Box
+        id="sweden-flag"
         component="img"
-        src={hongkong}
+        src={sweden}
         sx={{
           position: "absolute",
           width: { xs: "40px", sm: "50px", md: "60px" },
-          left: { xs: "150px", sm: "300px", md: "400px" },
+          left: { xs: "-75px", sm: "-85px", md: "-95px" },
           mt: "-10px",
         }}
       />
       <Box
-        component="img"
-        src={moving}
+        id="truck-ani-div"
         sx={{
-          position: "absolute",
-          width: { xs: "70px", sm: "80px", md: "90px" },
-          WebkitTransform: "scaleX(-1)",
-          mt: "-33px",
-          right: truckRight,
+          // background: "skyblue",
+          position: "relative",
+          left: { xs: "-85px", sm: "-95px", md: "-105px" },
+          height: { xs: "60px", sm: "70px", md: "80px" },
+          width: { xs: "225px", sm: "385px", md: "495px" },
+          pl: 0,
         }}
-      />
+      >
+        <Box
+          id="hk-flag"
+          component="img"
+          src={hongkong}
+          sx={{
+            position: "absolute",
+            width: { xs: "40px", sm: "50px", md: "60px" },
+            right: "-12%",
+            mt: "-10px",
+          }}
+        />
+        <Box
+          id="truck"
+          component="img"
+          src={moving}
+          sx={{
+            position: "absolute",
+            width: { xs: "70px", sm: "80px", md: "90px" },
+            WebkitTransform: "scaleX(-1)",
+            mt: "-33px",
+            right: truckRight,
+          }}
+        />
+      </Box>
       <Typography
         variant="subtitle1"
         theme={theme}
-        sx={{ pt: { xs: "2.5rem", sm: "3rem", md: "4rem" } }}
+        sx={{
+          // pt: { xs: "2.5rem", sm: "3rem", md: "4rem" },
+          pl: { xs: "1.5rem", sm: "2rem" },
+        }}
       >
         2019
       </Typography>
@@ -102,6 +130,7 @@ const Move = () => {
           width: { xs: "auto", sm: "250px" },
           maxWidth: { xs: "200px", sm: "250px" },
           pt: ".2rem",
+          pl: { xs: "1.5rem", sm: "2rem" },
         }}
       >
         Moved to Sweden to start a new chapter of my life
