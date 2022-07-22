@@ -29,6 +29,12 @@ const ThemeProvider = (props) => {
     color: "#3c3c3c",
   };
 
+  theme.typography.subtitle2 = {
+    fontFamily: "Cabin",
+    fontSize: "1.1rem",
+    color: "#3c3c3c",
+  };
+
   theme.typography.body1 = {
     fontFamily: "Cabin",
     fontSize: "1rem",
