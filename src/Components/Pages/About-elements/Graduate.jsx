@@ -1,6 +1,5 @@
 import { Box, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
-import { displayElement } from "../../../Helper";
 import graduated from "../../../Media/Icons/graduated.png";
 import { useTheme } from "../../Contexts/ThemeContextProvider";
 
@@ -9,9 +8,11 @@ const Graduate = () => {
   const [display, setDisplay] = useState(false);
 
   useEffect(() => {
+    const displayElement = () =>
+      window.scrollY > 5 ? setDisplay(true) : setDisplay(false);
+
     window.addEventListener("scroll", displayElement, { passive: true });
-    return () =>
-      window.removeEventListener("scroll", setDisplay(displayElement(5)));
+    return () => window.removeEventListener("scroll", displayElement);
   });
 
   return (
@@ -30,20 +31,20 @@ const Graduate = () => {
         src={graduated}
         sx={{
           position: "absolute",
-          width: { xs: "40px", sm: "50px", md: "60px" },
-          left: { xs: "-75px", sm: "-85px", md: "-95px" },
+          width: { xs: 40, sm: 50, md: 60 },
+          left: { xs: -75, sm: -85, md: -95 },
           mt: { xs: "-10px", sm: "-20px" },
         }}
       />
       <Box
         sx={{
           background: "#3c3c3c",
-          width: "15px",
-          height: "15px",
-          borderRadius: "50px",
+          width: 15,
+          height: 15,
+          borderRadius: 50,
           position: "absolute",
-          left: "-10px",
-          top: "-1px",
+          left: -10,
+          top: -1,
         }}
       />
       <Typography variant="subtitle1" theme={theme}>
@@ -53,8 +54,8 @@ const Graduate = () => {
         variant="body1"
         theme={theme}
         sx={{
-          width: { xs: "auto", sm: "250px" },
-          maxWidth: { xs: "200px", sm: "250px" },
+          width: { xs: "auto", sm: 250 },
+          maxWidth: { xs: 200, sm: 250 },
           pt: ".2rem",
         }}
       >

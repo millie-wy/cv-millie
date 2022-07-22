@@ -1,6 +1,5 @@
 import { Box, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
-import { displayElement } from "../../../Helper";
 import cruise from "../../../Media/Icons/cruise.png";
 import { useTheme } from "../../Contexts/ThemeContextProvider";
 
@@ -10,20 +9,25 @@ const Cruiselines = () => {
   const [cruiseLeft, setCruiseLeft] = useState(20);
 
   useEffect(() => {
+    const displayElement = () =>
+      window.scrollY > 440 ? setDisplay(true) : setDisplay(false);
+
     window.addEventListener("scroll", displayElement, { passive: true });
-    return () =>
-      window.removeEventListener("scroll", setDisplay(displayElement(480)));
+    return () => window.removeEventListener("scroll", displayElement);
   });
 
   useEffect(() => {
     const updateCruiseLeft = () => {
+      const y = window.scrollY;
+
       const parent = document.getElementById("cruise-div");
-      const scrollPercent = Math.min(
-        1,
-        ((window.scrollY - 520) / parent.clientHeight) * 0.1
-      );
-      let left = scrollPercent * parent.clientWidth;
-      left > 20 ? setCruiseLeft(left) : setCruiseLeft(20);
+      const aniDiv = document.getElementById("cruise-ani-div");
+      const scrollPercent = Math.min(1, (y - 550) / parent.clientHeight);
+      let speed = 0.3;
+
+      let left = scrollPercent * aniDiv.clientWidth * speed;
+
+      if (scrollPercent > 0) setCruiseLeft(left);
     };
     window.addEventListener("scroll", updateCruiseLeft, { passive: true });
     return () => window.removeEventListener("scroll", updateCruiseLeft);
@@ -45,22 +49,30 @@ const Cruiselines = () => {
         variant="body1"
         theme={theme}
         sx={{
-          width: { xs: "auto", sm: "250px" },
-          maxWidth: { xs: "200px", sm: "250px" },
+          width: { xs: "auto", sm: 250 },
+          maxWidth: { xs: 200, sm: 250 },
         }}
       >
         Through my jobs at two cruiselines, I got the chance to...
       </Typography>
       <Box
-        component="img"
-        src={cruise}
+        id="cruise-ani-div"
         sx={{
-          position: "absolute",
-          width: "140px",
-          zIndex: -1,
-          left: cruiseLeft,
+          position: "relative",
+          height: 140,
+          width: { xs: 280, sm: 300, md: 300 },
         }}
-      />
+      >
+        <Box
+          component="img"
+          src={cruise}
+          sx={{
+            position: "absolute",
+            width: { xs: 120, sm: 130, md: 140 },
+            left: cruiseLeft,
+          }}
+        />
+      </Box>
     </Box>
   );
 };

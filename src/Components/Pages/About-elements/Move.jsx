@@ -1,6 +1,5 @@
 import { Box, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
-import { displayElement } from "../../../Helper";
 import hongkong from "../../../Media/Icons/hongkong.png";
 import moving from "../../../Media/Icons/moving.png";
 import sweden from "../../../Media/Icons/sweden.png";
@@ -12,33 +11,25 @@ const Move = () => {
   const [truckRight, setTruckRight] = useState();
 
   useEffect(() => {
+    const displayElement = () =>
+      window.scrollY > 840 ? setDisplay(true) : setDisplay(false);
+
     window.addEventListener("scroll", displayElement, { passive: true });
-    return () =>
-      window.removeEventListener("scroll", setDisplay(displayElement(900)));
+    return () => window.removeEventListener("scroll", displayElement);
   });
 
   useEffect(() => {
     const updateTruckRight = () => {
+      const y = window.scrollY;
       const parent = document.getElementById("move-div");
-      const aniContainer = document.getElementById("truck-ani-div");
-      const scrollPercent = Math.min(
-        1,
-        (window.scrollY - 1000) / parent.clientHeight
-      );
+      const aniDiv = document.getElementById("truck-ani-div");
+      const truck = document.getElementById("truck");
+      const scrollPercent = Math.min(1, (y - 840) / parent.clientHeight);
 
-      let truckPos = scrollPercent * aniContainer.offsetWidth;
-
-      let left =
-        scrollPercent *
-        (aniContainer.offsetWidth -
-          document.getElementById("truck").clientWidth);
-
-      if (scrollPercent > 0) {
-        setTruckRight(left);
-      }
-
-      // position of the truck and flag elements to be done, moving speed as well
+      const right = scrollPercent * (aniDiv.clientWidth - truck.clientWidth);
+      if (scrollPercent > 0) setTruckRight(right);
     };
+
     window.addEventListener("scroll", updateTruckRight, { passive: true });
     return () => window.removeEventListener("scroll", updateTruckRight);
   });
@@ -48,23 +39,22 @@ const Move = () => {
       id="move-div"
       sx={{
         position: "relative",
-        height: 200,
+        height: 240,
         display: "flex",
         flexDirection: "column",
         zIndex: display ? 99 : 0,
         opacity: display ? 100 : 0,
         transition: "all .5s ease-in-out",
-        background: "yellow",
       }}
     >
       <Box
         sx={{
           background: "#3c3c3c",
-          width: "15px",
-          height: "15px",
-          borderRadius: "50px",
+          width: 15,
+          height: 15,
+          borderRadius: 50,
           position: "absolute",
-          left: "-10px",
+          left: -10,
         }}
       />
       <Box
@@ -73,19 +63,18 @@ const Move = () => {
         src={sweden}
         sx={{
           position: "absolute",
-          width: { xs: "40px", sm: "50px", md: "60px" },
-          left: { xs: "-75px", sm: "-85px", md: "-95px" },
+          width: { xs: 40, sm: 50, md: 60 },
+          left: { xs: -75, sm: -85, md: -95 },
           mt: "-10px",
         }}
       />
       <Box
         id="truck-ani-div"
         sx={{
-          // background: "skyblue",
           position: "relative",
-          left: { xs: "-85px", sm: "-95px", md: "-105px" },
-          height: { xs: "60px", sm: "70px", md: "80px" },
-          width: { xs: "225px", sm: "385px", md: "495px" },
+          left: { xs: -85, sm: -95, md: -105 },
+          height: { xs: 60, sm: 70, md: 80 },
+          width: { xs: 225, sm: 385, md: 495 },
           pl: 0,
         }}
       >
@@ -95,7 +84,7 @@ const Move = () => {
           src={hongkong}
           sx={{
             position: "absolute",
-            width: { xs: "40px", sm: "50px", md: "60px" },
+            width: { xs: 40, sm: 50, md: 60 },
             right: "-12%",
             mt: "-10px",
           }}
@@ -106,7 +95,7 @@ const Move = () => {
           src={moving}
           sx={{
             position: "absolute",
-            width: { xs: "70px", sm: "80px", md: "90px" },
+            width: { xs: 70, sm: 80, md: 90 },
             WebkitTransform: "scaleX(-1)",
             mt: "-33px",
             right: truckRight,
@@ -116,10 +105,7 @@ const Move = () => {
       <Typography
         variant="subtitle1"
         theme={theme}
-        sx={{
-          // pt: { xs: "2.5rem", sm: "3rem", md: "4rem" },
-          pl: { xs: "1.5rem", sm: "2rem" },
-        }}
+        sx={{ pl: { xs: "1.5rem", sm: "2rem" } }}
       >
         2019
       </Typography>
@@ -127,8 +113,8 @@ const Move = () => {
         variant="body1"
         theme={theme}
         sx={{
-          width: { xs: "auto", sm: "250px" },
-          maxWidth: { xs: "200px", sm: "250px" },
+          width: { xs: "auto", sm: 250 },
+          maxWidth: { xs: 200, sm: 250 },
           pt: ".2rem",
           pl: { xs: "1.5rem", sm: "2rem" },
         }}

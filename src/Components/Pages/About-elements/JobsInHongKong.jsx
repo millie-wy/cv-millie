@@ -1,6 +1,5 @@
 import { Box, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
-import { displayElement } from "../../../Helper";
 import work from "../../../Media/Icons/work.png";
 import { useTheme } from "../../Contexts/ThemeContextProvider";
 
@@ -9,9 +8,11 @@ const JobsInHongKong = () => {
   const [display, setDisplay] = useState(false);
 
   useEffect(() => {
+    const displayElement = () =>
+      window.scrollY > 140 ? setDisplay(true) : setDisplay(false);
+
     window.addEventListener("scroll", displayElement, { passive: true });
-    return () =>
-      window.removeEventListener("scroll", setDisplay(displayElement(160)));
+    return () => window.removeEventListener("scroll", displayElement);
   });
 
   return (
@@ -28,12 +29,12 @@ const JobsInHongKong = () => {
       <Box
         sx={{
           background: "#3c3c3c",
-          width: "15px",
-          height: "15px",
-          borderRadius: "50px",
+          width: 15,
+          height: 15,
+          borderRadius: 50,
           position: "absolute",
-          left: "-10px",
-          top: "-1px",
+          left: -10,
+          top: -1,
         }}
       />
       <Box
@@ -41,9 +42,8 @@ const JobsInHongKong = () => {
         src={work}
         sx={{
           position: "absolute",
-          width: { xs: "40px", sm: "50px", md: "60px" },
-          left: { xs: "-75px", sm: "-85px", md: "-95px" },
-          top: "-0px",
+          width: { xs: 40, sm: 50, md: 60 },
+          left: { xs: -75, sm: -85, md: -95 },
           mt: { xs: "-10px", sm: "-20px" },
         }}
       />
@@ -55,8 +55,8 @@ const JobsInHongKong = () => {
         variant="body1"
         theme={theme}
         sx={{
-          width: { xs: "auto", sm: "250px" },
-          maxWidth: { xs: "200px", sm: "250px" },
+          width: { xs: "auto", sm: 250 },
+          maxWidth: { xs: 200, sm: 250 },
           pt: ".2rem",
         }}
       >

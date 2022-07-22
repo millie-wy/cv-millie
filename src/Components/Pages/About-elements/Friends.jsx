@@ -1,6 +1,5 @@
 import { Box, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
-import { displayElement } from "../../../Helper";
 import people from "../../../Media/Icons/people.png";
 import { useTheme } from "../../Contexts/ThemeContextProvider";
 
@@ -9,9 +8,11 @@ const Friends = () => {
   const [display, setDisplay] = useState(false);
 
   useEffect(() => {
+    const displayElement = () =>
+      window.scrollY > 600 ? setDisplay(true) : setDisplay(false);
+
     window.addEventListener("scroll", displayElement, { passive: true });
-    return () =>
-      window.removeEventListener("scroll", setDisplay(displayElement(680)));
+    return () => window.removeEventListener("scroll", displayElement);
   });
 
   return (
@@ -30,8 +31,8 @@ const Friends = () => {
         variant="body1"
         theme={theme}
         sx={{
-          width: { xs: "auto", sm: "250px" },
-          maxWidth: { xs: "200px", sm: "250px" },
+          width: { xs: "auto", sm: 250 },
+          maxWidth: { xs: 200, sm: 250 },
         }}
       >
         Meet a lot of new friends from all around the world,

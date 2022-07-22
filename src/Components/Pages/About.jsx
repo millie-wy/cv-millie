@@ -25,10 +25,11 @@ const About = () => {
       const docH = document.body.offsetHeight;
       const containerH = document.getElementById("main").clientHeight;
 
-      window.scrollY > 3 ? setDisplay(true) : setDisplay(false);
+      y > 0 ? setDisplay(true) : setDisplay(false);
 
-      let scrollPercent = y / (docH - winH);
-      scrollPercent > 0.95
+      const scrollPercent = y / (docH - winH);
+
+      scrollPercent > 0.97
         ? setMaskTop(containerH)
         : setMaskTop(scrollPercent * containerH);
     };

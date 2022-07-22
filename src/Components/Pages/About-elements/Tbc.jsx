@@ -1,6 +1,5 @@
 import { Box, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
-import { displayElement } from "../../../Helper";
 import { useTheme } from "../../Contexts/ThemeContextProvider";
 
 const Tbc = () => {
@@ -8,11 +7,12 @@ const Tbc = () => {
   const [display, setDisplay] = useState(false);
 
   useEffect(() => {
-    window.addEventListener("scroll", displayElement, { passive: true });
-    return () =>
-      window.removeEventListener("scroll", setDisplay(displayElement(1300)));
-  });
+    const displayElement = () =>
+      window.scrollY > 1120 ? setDisplay(true) : setDisplay(false);
 
+    window.addEventListener("scroll", displayElement, { passive: true });
+    return () => window.removeEventListener("scroll", displayElement);
+  });
   return (
     <Box
       sx={{
@@ -27,22 +27,15 @@ const Tbc = () => {
       <Box
         sx={{
           background: "#3c3c3c",
-          width: "10px",
-          height: "10px",
-          borderRadius: "50px",
+          width: 10,
+          height: 10,
+          borderRadius: 50,
           position: "absolute",
-          left: "-7.5px",
-          top: "15px",
+          left: -7.5,
+          top: 12,
         }}
       />
-      <Typography
-        variant="subtitle1"
-        theme={theme}
-        sx={{
-          width: { xs: "auto", sm: "250px" },
-          maxWidth: { xs: "200px", sm: "250px" },
-        }}
-      >
+      <Typography variant="subtitle1" theme={theme}>
         TO BE CONTINUED
       </Typography>
     </Box>
