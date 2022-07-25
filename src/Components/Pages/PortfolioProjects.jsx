@@ -10,15 +10,23 @@ const PortfolioProjects = () => {
         background: "#fff",
         borderRadius: "4px",
         display: "flex",
-        flexDirection: "row",
+        flexDirection: { xs: "column", sm: "row", md: "row" },
+        pt: { xs: "1rem", sm: 0, md: 0 },
       }}
     >
+      {/* Preview box */}
       <Box
         sx={{
           minWidth: "250px",
+          maxWidth: "250px",
           height: "187.5px",
           backgroundColor: "#B4CEE5",
-          borderRadius: "4px 0 0 4px",
+          borderRadius: {
+            xs: "4px",
+            sm: "4px 0 0 0",
+            md: "4px 0 0 4px",
+          },
+          margin: { xs: "auto", sm: 0, md: 0 },
         }}
       >
         <Typography
@@ -35,6 +43,8 @@ const PortfolioProjects = () => {
           PREVIEW
         </Typography>
       </Box>
+
+      {/* project details */}
       <Box sx={{ px: "1.2rem", py: "1rem" }}>
         <Typography variant="body1" theme={theme} fontWeight="bold">
           REST-API - American Diner Menu
@@ -89,90 +99,6 @@ const PortfolioProjects = () => {
             gap: ".3rem",
           }}
         >
-          <Typography
-            variant="overline"
-            theme={theme}
-            color="#B4CEE5"
-            sx={{
-              border: "1px solid #B4CEE5",
-              px: ".2rem",
-              borderRadius: "2.5px",
-              lineHeight: "1rem",
-              textTransform: "uppercase",
-            }}
-          >
-            individual
-          </Typography>
-          <Typography
-            variant="overline"
-            theme={theme}
-            color="#B4CEE5"
-            sx={{
-              border: "1px solid #B4CEE5",
-              px: ".2rem",
-              borderRadius: "2.5px",
-              lineHeight: "1rem",
-              textTransform: "uppercase",
-            }}
-          >
-            individual
-          </Typography>
-          <Typography
-            variant="overline"
-            theme={theme}
-            color="#B4CEE5"
-            sx={{
-              border: "1px solid #B4CEE5",
-              px: ".2rem",
-              borderRadius: "2.5px",
-              lineHeight: "1rem",
-              textTransform: "uppercase",
-            }}
-          >
-            individual
-          </Typography>
-          <Typography
-            variant="overline"
-            theme={theme}
-            color="#B4CEE5"
-            sx={{
-              border: "1px solid #B4CEE5",
-              px: ".2rem",
-              borderRadius: "2.5px",
-              lineHeight: "1rem",
-              textTransform: "uppercase",
-            }}
-          >
-            individual
-          </Typography>
-          <Typography
-            variant="overline"
-            theme={theme}
-            color="#B4CEE5"
-            sx={{
-              border: "1px solid #B4CEE5",
-              px: ".2rem",
-              borderRadius: "2.5px",
-              lineHeight: "1rem",
-              textTransform: "uppercase",
-            }}
-          >
-            individual
-          </Typography>
-          <Typography
-            variant="overline"
-            theme={theme}
-            color="#B4CEE5"
-            sx={{
-              border: "1px solid #B4CEE5",
-              px: ".2rem",
-              borderRadius: "2.5px",
-              lineHeight: "1rem",
-              textTransform: "uppercase",
-            }}
-          >
-            individual
-          </Typography>
           <Typography
             variant="overline"
             theme={theme}
