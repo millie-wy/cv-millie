@@ -1,5 +1,7 @@
 import { Box, Container, Typography } from "@mui/material";
 import { useTheme } from "../Contexts/ThemeContextProvider";
+import { SortRounded } from "@mui/icons-material";
+import PortfolioProjects from "./PortfolioProjects";
 
 const Portfolio = () => {
   const { theme } = useTheme();
@@ -30,20 +32,51 @@ const Portfolio = () => {
       />
 
       {/* subject */}
-      <Box sx={{ textAlign: "center" }}>
-        <Typography variant="h4" theme={theme} textAlign="center">
-          MY PORTFOLIO
-        </Typography>
-        <Typography
-          variant="subtitle2"
-          theme={theme}
-          textAlign="center"
-          sx={{ pt: ".5rem" }}
+      <Typography variant="h4" theme={theme} textAlign="center">
+        MY PORTFOLIO
+      </Typography>
+
+      {/* toolbar */}
+      <Container>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            placeItems: "center",
+            justifyContent: "space-between",
+            pt: "2.5rem",
+            pb: "1rem",
+          }}
         >
-          The library of my coding projects - from both my study and my hobby
-          projects
-        </Typography>
-      </Box>
+          <Typography
+            variant="body1"
+            theme={theme}
+            sx={{ fontWeight: "bold", textTransform: "uppercase" }}
+          >
+            10 Projects
+          </Typography>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              placeItems: "center",
+            }}
+          >
+            <SortRounded fontSize="small" />
+            <Typography
+              variant="overline"
+              theme={theme}
+              sx={{ pl: ".2rem", cursor: "pointer" }}
+            >
+              Date Published
+            </Typography>
+          </Box>
+        </Box>
+        <Box sx={{ display: "flex", flexDirection: "column", gap: "1.3rem" }}>
+          <PortfolioProjects />
+          <PortfolioProjects />
+        </Box>
+      </Container>
     </Container>
   );
 };
