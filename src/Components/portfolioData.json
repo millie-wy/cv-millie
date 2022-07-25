@@ -45,7 +45,7 @@
   },
   {
     "title": "REST-API: American Diner Menu",
-    "description": "A mocked American Diner menu with a REST-API created with NodeJS and Express. <br />The API has 5 endpoints (2 GETs, POST, PUT and DELETE) using JSON format for transporting the data, adding new items and also fetching, updating and deleting a specific item. The client side was written with React / JavaScript.",
+    "description": "A mocked American Diner menu with a REST-API created with NodeJS and Express. The API has 5 endpoints (2 GETs, POST, PUT and DELETE) using JSON format for transporting the data, adding new items and also fetching, updating and deleting a specific item. The client side was written with React / JavaScript.",
     "src": "../Media/PfPreview/american-diner-menu.mp4",
     "repo": "https://github.com/millie-wy/REST-API_American-Diner-Menu",
     "categories": ["school assignment", "individual"],

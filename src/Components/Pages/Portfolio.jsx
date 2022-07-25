@@ -2,6 +2,7 @@ import { Box, Container, Typography } from "@mui/material";
 import { useTheme } from "../Contexts/ThemeContextProvider";
 import { SortRounded } from "@mui/icons-material";
 import PortfolioProjects from "./PortfolioProjects";
+import portfolioData from "../portfolioData.json";
 
 const Portfolio = () => {
   const { theme } = useTheme();
@@ -73,8 +74,9 @@ const Portfolio = () => {
           </Box>
         </Box>
         <Box sx={{ display: "flex", flexDirection: "column", gap: "1.3rem" }}>
-          <PortfolioProjects />
-          <PortfolioProjects />
+          {portfolioData.map((project) => (
+            <PortfolioProjects key={project.title} project={project} />
+          ))}
         </Box>
       </Container>
     </Container>

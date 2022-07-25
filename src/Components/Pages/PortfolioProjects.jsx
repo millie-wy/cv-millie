@@ -2,9 +2,25 @@ import { Box, Typography } from "@mui/material";
 import { useTheme } from "../Contexts/ThemeContextProvider";
 import { useState } from "react";
 
-const PortfolioProjects = () => {
+const PortfolioProjects = (props) => {
   const { theme } = useTheme();
   const [readMore, setReadMore] = useState(false);
+
+  const formatDate = (dateString) => {
+    const month = dateString.split("/").shift();
+    const year = dateString.split("/").pop();
+
+    let date = new Date();
+    date.setMonth(month - 1);
+    date.setFullYear(year);
+    date.setDate(1);
+
+    const formattedDate = date
+      .toLocaleDateString("en-GB", { month: "short", year: "numeric" })
+      .replace(/ /g, " ");
+
+    return formattedDate;
+  };
 
   return (
     <Box
@@ -49,18 +65,23 @@ const PortfolioProjects = () => {
       {/* project details */}
       <Box sx={{ px: "1.2rem", py: "1rem" }}>
         <Typography variant="body1" theme={theme} fontWeight="bold">
-          REST-API - American Diner Menu
+          {props.project.title}
         </Typography>
-        <Typography variant="overline" theme={theme} color="#D6D5D5" pt=".2rem">
-          MAY 2022
+        <Typography
+          variant="overline"
+          theme={theme}
+          color="#D6D5D5"
+          pt=".2rem"
+          textTransform="uppercase"
+        >
+          {formatDate(props.project.released)}
         </Typography>
 
         <Box>
           <Typography variant="body2" theme={theme} color="#7E7D7D" py=".7rem">
             {readMore
-              ? "A mocked American Diner menu with a REST-API created with NodeJS and Express. The API has 5 endpoints (2 GETs, POST, PUT and DELETE) using JSON format for transporting the data, adding new items and also fetching, updating and deleting a specific item. The client side was written with React / JavaScript."
-              : "A mocked American Diner menu with a REST-API created with NodeJS and Express. The API has 5 endpoints (2 GETs, POST, P" +
-                "..."}
+              ? props.project.description
+              : props.project.description.substring(0, 200) + "..."}
             <Typography
               variant="overline"
               theme={theme}
@@ -84,20 +105,23 @@ const PortfolioProjects = () => {
             gap: ".3rem",
           }}
         >
-          <Typography
-            variant="overline"
-            theme={theme}
-            color="#B4CEE5"
-            sx={{
-              border: "1px solid #B4CEE5",
-              px: ".2rem",
-              borderRadius: "2.5px",
-              lineHeight: "1rem",
-              textTransform: "uppercase",
-            }}
-          >
-            individual
-          </Typography>
+          {props.project.tags.map((tag) => (
+            <Typography
+              key={tag}
+              variant="overline"
+              theme={theme}
+              color="#B4CEE5"
+              sx={{
+                border: "1px solid #B4CEE5",
+                px: ".2rem",
+                borderRadius: "2.5px",
+                lineHeight: "1rem",
+                textTransform: "uppercase",
+              }}
+            >
+              {tag}
+            </Typography>
+          ))}
         </Box>
       </Box>
     </Box>
