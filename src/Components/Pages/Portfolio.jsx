@@ -1,11 +1,17 @@
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Container, Typography, Menu, MenuItem } from "@mui/material";
 import { useTheme } from "../Contexts/ThemeContextProvider";
 import { SortRounded } from "@mui/icons-material";
 import PortfolioProjects from "./PortfolioProjects";
 import portfolioData from "../portfolioData.json";
+import { useState } from "react";
 
 const Portfolio = () => {
   const { theme } = useTheme();
+  const [toggleSort, setToggleSort] = useState(null);
+  const open = Boolean(toggleSort);
+
+  const handleClick = (e) => setToggleSort(e.currentTarget);
+  const handleClose = () => setToggleSort(null);
 
   return (
     <Container
@@ -68,9 +74,15 @@ const Portfolio = () => {
               variant="overline"
               theme={theme}
               sx={{ pl: ".2rem", cursor: "pointer" }}
+              onClick={handleClick}
             >
               Date Published
             </Typography>
+            <Menu anchorEl={toggleSort} open={open} onClose={handleClose}>
+              <MenuItem onClick={handleClose}>Oldest</MenuItem>
+              <MenuItem onClick={handleClose}>A-Z</MenuItem>
+              <MenuItem onClick={handleClose}>Z-A</MenuItem>
+            </Menu>
           </Box>
         </Box>
         <Box sx={{ display: "flex", flexDirection: "column", gap: "1.3rem" }}>
