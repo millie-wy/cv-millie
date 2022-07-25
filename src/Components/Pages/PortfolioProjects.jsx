@@ -1,8 +1,10 @@
 import { Box, Typography } from "@mui/material";
 import { useTheme } from "../Contexts/ThemeContextProvider";
+import { useState } from "react";
 
 const PortfolioProjects = () => {
   const { theme } = useTheme();
+  const [readMore, setReadMore] = useState(false);
 
   return (
     <Box
@@ -55,39 +57,22 @@ const PortfolioProjects = () => {
 
         <Box>
           <Typography variant="body2" theme={theme} color="#7E7D7D" py=".7rem">
-            A mocked American Diner menu with a REST-API created with NodeJS and
-            Express. The API has 5 endpoints (2 GETs, POST, P...
+            {readMore
+              ? "A mocked American Diner menu with a REST-API created with NodeJS and Express. The API has 5 endpoints (2 GETs, POST, PUT and DELETE) using JSON format for transporting the data, adding new items and also fetching, updating and deleting a specific item. The client side was written with React / JavaScript."
+              : "A mocked American Diner menu with a REST-API created with NodeJS and Express. The API has 5 endpoints (2 GETs, POST, P" +
+                "..."}
             <Typography
               variant="overline"
               theme={theme}
               color="#B4CEE5"
               pl=".3rem"
               sx={{ cursor: "pointer" }}
+              onClick={() => setReadMore(!readMore)}
             >
-              Read more
+              {readMore ? "Read less" : "Read more"}
             </Typography>
           </Typography>
         </Box>
-
-        {/* <Box sx={{ display: "flex", flexDirection: "row", pt: ".8rem" }}>
-          <Typography variant="body2" theme={theme} color="#D6D5D5" pr=".6rem">
-            CATEGORIES
-          </Typography>
-          <Box
-            sx={{
-              display: "flex",
-              flexWrap: "wrap",
-              gap: ".3rem",
-            }}
-          >
-            <Typography variant="body2" theme={theme} color="#B4CEE5">
-              School Assignment
-            </Typography>
-            <Typography variant="body2" theme={theme} color="#B4CEE5">
-              Group
-            </Typography>
-          </Box> 
-        </Box> */}
         <Typography variant="overline" theme={theme} color="#D6D5D5">
           KEYWORDS
         </Typography>
