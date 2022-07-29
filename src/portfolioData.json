@@ -13,7 +13,7 @@
       "Express",
       "React",
       "TypeScript",
-      "MaterialUI"
+      "MUI"
     ],
     "released": "06/2022"
   },
@@ -39,7 +39,7 @@
       "Express",
       "React",
       "JavaScript",
-      "MaterialUI"
+      "MUI"
     ],
     "released": "04/2022"
   },
@@ -54,7 +54,7 @@
   },
   {
     "title": "Webshop: comme ci comme ça (1st version)",
-    "description": "A fully functional mocked webshop which the user can place order just as on a real webshop. We considered both the functionality and user experience in this project so there are a lot of small details you can discover. The webshop has also an admin page where allows the 'admin' to add, remove and even edit the products. This project was built with React / TypeScript with Material UI.",
+    "description": "A fully functional mocked webshop which the user can place order just as on a real webshop. We considered both the functionality and user experience in this project so there are a lot of small details you can discover. The webshop has also an admin page where allows the 'admin' to add, remove and even edit the products. This project was built with React / TypeScript with MUI.",
     "src": "../Media/PfPreview/webshop-cc.mp4",
     "repo": "https://github.com/millie-wy/Webshop_comme-ci-comme--a",
     "categories": ["school assignment", "group"],

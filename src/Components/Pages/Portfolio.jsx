@@ -2,7 +2,7 @@ import { Box, Container, Typography, Menu, MenuItem } from "@mui/material";
 import { useTheme } from "../Contexts/ThemeContextProvider";
 import { SortRounded } from "@mui/icons-material";
 import PortfolioProjects from "./PortfolioProjects";
-import portfolioData from "../portfolioData.json";
+import portfolioData from "../../portfolioData.json";
 import { useState } from "react";
 
 const Portfolio = () => {
