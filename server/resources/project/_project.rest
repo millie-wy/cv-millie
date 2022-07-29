@@ -1,0 +1,14 @@
+GET http://localhost:3001/api/project
+###
+
+POST http://localhost:3001/api/project
+Content-Type: application/json
+
+{
+    "title": "new project",
+    "description": "abc", 
+    "mediaId": "62e3d459c43027c4678d706b"
+}
+
+###
+DELETE http://localhost:3001/api/project/62e3d0217700545e42dc0cf5
