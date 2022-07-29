@@ -1,0 +1,26 @@
+{
+  "name": "cv-millie",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "react-scripts start",
+    "start": "serve -s build",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "heroku-postbuild": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/millie-wy/cv-millie.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/millie-wy/cv-millie/issues"
+  },
+  "homepage": "https://github.com/millie-wy/cv-millie#readme",
+  "heroku-run-build-script": true
+}
