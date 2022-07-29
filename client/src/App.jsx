@@ -6,20 +6,23 @@ import Contact from "./Components/Pages/Contact";
 import Home from "./Components/Pages/Home";
 import NotFound from "./Components/Pages/NotFound";
 import Portfolio from "./Components/Pages/Portfolio";
+import PortfolioProvider from "./Components/Contexts/PortfolioContextProvider";
 
 const App = () => {
   return (
     <BrowserRouter>
       <ThemeProvider>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/portfolio" element={<Portfolio />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="*" element={<NotFound />} />
-          </Route>
-        </Routes>
+        <PortfolioProvider>
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/portfolio" element={<Portfolio />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="*" element={<NotFound />} />
+            </Route>
+          </Routes>
+        </PortfolioProvider>
       </ThemeProvider>
     </BrowserRouter>
   );
