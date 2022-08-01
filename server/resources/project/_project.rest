@@ -5,9 +5,13 @@ POST http://localhost:3001/api/project
 Content-Type: application/json
 
 {
-    "title": "new project",
-    "description": "abc", 
-    "mediaId": "62e3d459c43027c4678d706b"
+    "title": "REST-API: American Diner Menu",
+    "description": "A mocked American Diner menu with a REST-API created with NodeJS and Express. The API has 5 endpoints (2 GETs, POST, PUT and DELETE) using JSON format for transporting the data, adding new items and also fetching, updating and deleting a specific item. The client side was written with React / JavaScript.",
+    "mediaId": "62e7df22d26f64e4543b42b5",
+    "repo": "https://github.com/millie-wy/REST-API_American-Diner-Menu",
+    "categories": ["school assignment", "individual"],
+    "tags": ["REST-API", "NodeJS", "Express", "React", "JavaScript"],
+    "released": "04/2022"
 }
 
 ###

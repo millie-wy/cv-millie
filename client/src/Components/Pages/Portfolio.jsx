@@ -1,19 +1,58 @@
-import { Box, Container, Typography, Menu, MenuItem } from "@mui/material";
-import { useTheme } from "../Contexts/ThemeContextProvider";
 import { SortRounded } from "@mui/icons-material";
+import {
+  Box,
+  CircularProgress,
+  Container,
+  Menu,
+  MenuItem,
+  Typography,
+} from "@mui/material";
+import { useEffect, useState } from "react";
+import { usePortfolio } from "../Contexts/PortfolioContextProvider";
+import { useTheme } from "../Contexts/ThemeContextProvider";
 import PortfolioProjects from "./PortfolioProjects";
-import portfolioData from "../../portfolioData.json";
-import { useState } from "react";
 
 const Portfolio = () => {
   const { theme } = useTheme();
+  const { isLoading, fetchPortfolio, portfolio, convertDate } = usePortfolio();
   const [toggleSort, setToggleSort] = useState(null);
   const open = Boolean(toggleSort);
 
   const handleClick = (e) => setToggleSort(e.currentTarget);
   const handleClose = () => setToggleSort(null);
 
-  return (
+  useEffect(() => {
+    fetchPortfolio();
+  }, [fetchPortfolio]);
+
+  return isLoading ? (
+    <Container
+      maxWidth={false}
+      sx={{
+        py: "4rem",
+        textAlign: "center",
+        background: "#ECF1F5",
+        height: "fit-content",
+        minHeight: "calc(100vh - 3.5rem)",
+        overflow: "hidden",
+        scrollBehavior: "smooth",
+      }}
+    >
+      {/* background color for header */}
+      <Box
+        sx={{
+          background: "#ECF1F5",
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: -99,
+          height: "4rem",
+        }}
+      />
+      <CircularProgress size="2rem" color="inherit" />
+    </Container>
+  ) : (
     <Container
       maxWidth={false}
       sx={{
@@ -60,7 +99,7 @@ const Portfolio = () => {
             theme={theme}
             sx={{ fontWeight: "bold", textTransform: "uppercase" }}
           >
-            10 Projects
+            {portfolio.length} Projects
           </Typography>
           <Box
             sx={{
@@ -85,10 +124,20 @@ const Portfolio = () => {
             </Menu>
           </Box>
         </Box>
-        <Box sx={{ display: "flex", flexDirection: "column", gap: "1.3rem" }}>
-          {portfolioData.map((project) => (
-            <PortfolioProjects key={project.title} project={project} />
-          ))}
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: { xs: "1.3rem", sm: "1.4rem", md: "1.5rem" },
+          }}
+        >
+          {portfolio
+            .sort((a, b) =>
+              convertDate(a.released) < convertDate(b.released) ? 1 : -1
+            )
+            .map((project) => (
+              <PortfolioProjects key={project._id} project={project} />
+            ))}
         </Box>
       </Container>
     </Container>

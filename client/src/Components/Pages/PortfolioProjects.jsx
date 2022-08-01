@@ -1,30 +1,25 @@
+import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import { Box, Typography } from "@mui/material";
-import { useTheme } from "../Contexts/ThemeContextProvider";
 import { useState } from "react";
+import { usePortfolio } from "../Contexts/PortfolioContextProvider";
+import { useTheme } from "../Contexts/ThemeContextProvider";
 
 const PortfolioProjects = (props) => {
   const { theme } = useTheme();
   const [readMore, setReadMore] = useState(false);
+  const { convertDate } = usePortfolio();
 
   const formatDate = (dateString) => {
-    const month = dateString.split("/").shift();
-    const year = dateString.split("/").pop();
-
-    let date = new Date();
-    date.setMonth(month - 1);
-    date.setFullYear(year);
-    date.setDate(1);
-
-    const formattedDate = date
+    const formattedDate = convertDate(dateString)
       .toLocaleDateString("en-GB", { month: "short", year: "numeric" })
       .replace(/ /g, " ");
-
     return formattedDate;
   };
 
   return (
     <Box
       sx={{
+        minWidth: 250,
         background: "#fff",
         borderRadius: "4px",
         display: "flex",
@@ -35,10 +30,9 @@ const PortfolioProjects = (props) => {
       {/* Preview box */}
       <Box
         sx={{
-          minWidth: "250px",
-          maxWidth: "250px",
-          height: "187.5px",
-          backgroundColor: "#B4CEE5",
+          minWidth: 250,
+          maxWidth: 250,
+          maxHeight: 187.5,
           borderRadius: {
             xs: "4px",
             sm: "4px 0 0 0",
@@ -47,26 +41,70 @@ const PortfolioProjects = (props) => {
           margin: { xs: "auto", sm: 0, md: 0 },
         }}
       >
-        <Typography
-          variant="body1"
-          theme={theme}
-          color="#fff"
-          sx={{
-            height: "100%",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          PREVIEW
-        </Typography>
+        {props.project.mediaSrc.length > 20 ? (
+          <Box
+            component="video"
+            width="100%"
+            autoPlay
+            loop
+            muted
+            playsInline
+            sx={{
+              borderRadius: {
+                xs: "4px",
+                sm: "4px 0 0 0",
+                md: "4px 0 0 4px",
+              },
+            }}
+          >
+            <source
+              src={`http://localhost:3001${props.project.mediaSrc}`}
+              type="video/mp4"
+            />
+          </Box>
+        ) : (
+          <Typography
+            variant="body1"
+            theme={theme}
+            color="#fff"
+            sx={{
+              backgroundColor: "#B4CEE5",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              borderRadius: {
+                xs: "4px",
+                sm: "4px 0 0 0",
+                md: "4px 0 0 4px",
+              },
+            }}
+          >
+            PREVIEW
+          </Typography>
+        )}
       </Box>
 
       {/* project details */}
       <Box sx={{ px: "1.2rem", py: "1rem" }}>
-        <Typography variant="body1" theme={theme} fontWeight="bold">
-          {props.project.title}
-        </Typography>
+        <a
+          style={{ textDecoration: "none" }}
+          target="_blank"
+          rel="noreferrer"
+          href={props.project.repo}
+        >
+          <Typography variant="body1" theme={theme} fontWeight="bold">
+            {props.project.title}
+            <OpenInNewIcon
+              fontSize="10px"
+              sx={{
+                pl: ".3rem",
+                verticalAlign: "text-bottom",
+                color: "#3c3c3c",
+              }}
+            />
+          </Typography>
+        </a>
+
         <Typography
           variant="overline"
           theme={theme}

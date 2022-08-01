@@ -2,7 +2,7 @@
   {
     "title": "Webshop: comme ci comme ça (2nd version)",
     "description": "This project is an upgrade to the previous version. Previously we had our data saved in a local file and local storage, and in this update we have built the fully functional backend that allows to all the data saved and handled through MongoDB. We have also created 2 different user rights - admin and user. Admin can add, edit or delete any products and have an overall to the orders, while a user can sign up an account and place an order. This project was built with React / TypeScript with MUI in the front end, and Express, NodeJS, MongoDB, Mongoose and Multer in the backend.",
-    "src": "",
+    "mediaId": "",
     "repo": "https://github.com/millie-wy/slutprojekt-webbshop",
     "categories": ["school assignment", "group"],
     "tags": [
@@ -20,7 +20,7 @@
   {
     "title": "Chat App: Chirp",
     "description": "A chat app we created for users to gather and chat with others in real time. In this app, user can not only create his/her own chatroom with a customised title or join an existing room, but also send private messages (DM) to other online users. This project is created with React TS in frontend and Socket.io and nodeJS in backend.",
-    "src": "",
+    "mediaId": "",
     "repo": "https://github.com/millie-wy/ChatApp_Chirp",
     "categories": ["school assignment", "group"],
     "tags": ["Socket.io", "NodeJS", "Express", "React", "TypeScript"],
@@ -29,7 +29,7 @@
   {
     "title": "User-based Content: LetsCook",
     "description": "A mocked recipe website and a user-based platform where a visitor can sign up an account, sign in, create recipe and edit/remove it. The user is also able to edit or even remove his/her own profile. An admin can perform all CRUD actions on recipes and promote/demote or delete an user. This project is created with React JS and MUI in frontend, and Express, MongoDB and Mongoose in backend.",
-    "src": "",
+    "mediaId": "",
     "repo": "https://github.com/millie-wy/letsCook",
     "categories": ["school assignment", "group"],
     "tags": [
@@ -46,7 +46,7 @@
   {
     "title": "REST-API: American Diner Menu",
     "description": "A mocked American Diner menu with a REST-API created with NodeJS and Express. The API has 5 endpoints (2 GETs, POST, PUT and DELETE) using JSON format for transporting the data, adding new items and also fetching, updating and deleting a specific item. The client side was written with React / JavaScript.",
-    "src": "../Media/PfPreview/american-diner-menu.mp4",
+    "mediaId": "62e7df22d26f64e4543b42b5",
     "repo": "https://github.com/millie-wy/REST-API_American-Diner-Menu",
     "categories": ["school assignment", "individual"],
     "tags": ["REST-API", "NodeJS", "Express", "React", "JavaScript"],
@@ -55,7 +55,7 @@
   {
     "title": "Webshop: comme ci comme ça (1st version)",
     "description": "A fully functional mocked webshop which the user can place order just as on a real webshop. We considered both the functionality and user experience in this project so there are a lot of small details you can discover. The webshop has also an admin page where allows the 'admin' to add, remove and even edit the products. This project was built with React / TypeScript with MUI.",
-    "src": "../Media/PfPreview/webshop-cc.mp4",
+    "mediaId": "62e7deedd26f64e4543b42af",
     "repo": "https://github.com/millie-wy/Webshop_comme-ci-comme--a",
     "categories": ["school assignment", "group"],
     "tags": ["React", "TypeScript"],
@@ -64,7 +64,7 @@
   {
     "title": "My Coffee",
     "description": "My Coffee is a coffeeguide where you can search for coffee and add your favourites to your 'My Coffee List'. You can also get information like description and ingredients for all the individual coffees.",
-    "src": "",
+    "mediaId": "",
     "repo": "https://github.com/millie-wy/mycoffee",
     "categories": ["school assignment", "group"],
     "tags": ["React", "TypeScript"],
@@ -73,7 +73,7 @@
   {
     "title": "Calculator",
     "description": "My first tiny hobby project - a calculator that handles simple calculation as addition, subtraction, multiplication and division. This app is writted by TypeScript with no external libraries or frameworks.",
-    "src": "../Media/PfPreview/calculator.mp4",
+    "mediaId": "62e7df50d26f64e4543b42b9",
     "repo": "https://github.com/millie-wy/Tool_Calculator",
     "categories": ["hobby project", "individual"],
     "tags": ["TypeScript"],
@@ -82,7 +82,7 @@
   {
     "title": "Game: Rocket Journey",
     "description": "An interstellar exploration game created with TypeScript and p5.js by me and my four classmates Erik Isaksson, Olivia Isberg, Jannie Bäckman Kuurne and Emil Hagelin. We created also all the graphics in this game.",
-    "src": "../Media/PfPreview/rocket-journey.mp4",
+    "mediaId": "62e7dfdcd26f64e4543b42d4",
     "repo": "https://github.com/millie-wy/Game_Rocket-Journey",
     "categories": ["school assignment", "group"],
     "tags": ["p5.js", "TypeScript"],
@@ -91,7 +91,7 @@
   {
     "title": "My Calendar",
     "description": "An online calendar with a todo list that allows you to create todo items for a specific date. The todos that you create will be stored in your browser's local storage. This project is a group assignment from my school, created together with Sara Lindqvist and Fia Andersson.",
-    "src": "../Media/PfPreview/my-calendar.mp4",
+    "mediaId": "62e7df98d26f64e4543b42c7",
     "repo": "https://github.com/millie-wy/Tool_Calendar",
     "categories": ["school assignment", "group"],
     "tags": ["JavaScript"],
@@ -100,16 +100,16 @@
   {
     "title": "Millie Cheung | Front-end Developer (1st version)",
     "description": "My first interactive CV (or portfolio) that is published on the Internet, which is the same page you are on now. In this little cozy place you can get to know about me and my works, as well as find my social media.",
-    "src": "../Media/PfPreview/millies-portfolio.mp4",
+    "mediaId": "62e7df6ad26f64e4543b42bd",
     "repo": "https://github.com/millie-wy/my-CV",
     "categories": ["school assignment", "individual"],
     "tags": ["JavaScript"],
     "released": "11/2021"
   },
   {
-    "title": "Minigame: Bank Robbery Adventur",
+    "title": "Minigame: Bank Robbery Adventure",
     "description": "A text-based mini adventure where you can experience becoming a beginner in robbery. In the game, your gang leader gives you the task of robbing a bank to show your ability and courage. This project is an individual assignment from my school.",
-    "src": "../Media/PfPreview/bank-robbery-adventure.mp4",
+    "mediaId": "../Media/PfPreview/bank-robbery-adventure.mp4",
     "repo": "https://github.com/millie-wy/Game_Bank-Robbery-Adventure",
     "categories": ["school assignment", "individual"],
     "tags": ["JavaScript"],
