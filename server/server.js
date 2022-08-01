@@ -7,6 +7,7 @@ import cookieSession from "cookie-session";
 
 const app = express();
 const uri = process.env.MONGODB_URI;
+const port = process.env.PORT || 8000;
 
 // global middlewares
 app.use(express.json());
@@ -25,5 +26,10 @@ app.use("/api/project", projectRouter);
 app.use("/api/media", mediaRouter);
 
 mongoose.connect(`"${uri}"`, (err) => {
-  err ? console.log(err) : console.log("Connection to database established.");
+  if (err) {
+    console.log(err);
+  } else {
+    console.log("Connection to database established.");
+    app.listen(port, () => console.log("Server is running on port: " + port));
+  }
 });

@@ -4,7 +4,7 @@ module.exports = function (app) {
   app.use(
     "/api",
     createProxyMiddleware({
-      target: "https://cv-millie-server.herokuapp.com/",
+      target: "http://localhost:8000",
       changeOrigin: true,
     })
   );
