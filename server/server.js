@@ -24,6 +24,6 @@ app.use("/api/admin", adminRouter);
 app.use("/api/project", projectRouter);
 app.use("/api/media", mediaRouter);
 
-mongoose.connect(uri, (err) => {
+mongoose.connect(`"${uri}"`, (err) => {
   err ? console.log(err) : console.log("Connection to database established.");
 });
