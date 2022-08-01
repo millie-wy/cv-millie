@@ -3,12 +3,16 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+  "engines": {
+    "node": "17.1.0"
+  },
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "build": "webpack"
+    "build": "webpack",
+    "heroku-prebuild": "npm install --dev"
   },
   "author": "",
   "license": "ISC",
