@@ -37,13 +37,6 @@ const PortfolioProvider = (props) => {
     return date;
   };
 
-  const formatDate = (date) => {
-    const formattedDate = date
-      .toLocaleDateString("en-GB", { month: "short", year: "numeric" })
-      .replace(/ /g, " ");
-    return formattedDate;
-  };
-
   // const fetchPortfolio = useCallback(async () => {
   //   let response = await fetch("/api/project", {
   //     method: "GET",

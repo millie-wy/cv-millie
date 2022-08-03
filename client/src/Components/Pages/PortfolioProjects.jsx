@@ -57,10 +57,7 @@ const PortfolioProjects = (props) => {
               },
             }}
           >
-            <source
-              src={`https://cv-millie-server.herokuapp.com${props.project.mediaSrc}`}
-              type="video/mp4"
-            />
+            <source src={props.project.mediaSrc} type="video/mp4" />
           </Box>
         ) : (
           <Typography
