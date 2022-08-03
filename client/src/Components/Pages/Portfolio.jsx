@@ -15,6 +15,7 @@ import PortfolioProjects from "./PortfolioProjects";
 const Portfolio = () => {
   const { theme } = useTheme();
   const { isLoading, fetchPortfolio, portfolio, convertDate } = usePortfolio();
+  const [sort, setSort] = useState("Newest");
   const [toggleSort, setToggleSort] = useState(null);
   const open = Boolean(toggleSort);
 
@@ -24,6 +25,24 @@ const Portfolio = () => {
   useEffect(() => {
     fetchPortfolio();
   }, [fetchPortfolio]);
+
+  const selectSortCriteria = (e) => {
+    setSort(e.target.innerText);
+    handleClose();
+  };
+
+  const sortData = (a, b) =>
+    sort === "Z-A"
+      ? b.title.localeCompare(a.title)
+      : sort === "A-Z"
+      ? a.title.localeCompare(b.title)
+      : sort === "Oldest"
+      ? convertDate(a.released) > convertDate(b.released)
+        ? 1
+        : -1
+      : convertDate(a.released) < convertDate(b.released)
+      ? 1
+      : -1;
 
   return isLoading ? (
     <Container
@@ -110,17 +129,57 @@ const Portfolio = () => {
           >
             <SortRounded fontSize="small" />
             <Typography
-              variant="overline"
+              id="sort-button"
+              variant="body2"
               theme={theme}
               sx={{ pl: ".2rem", cursor: "pointer" }}
               onClick={handleClick}
             >
-              Date Published
+              Sort by {sort}
             </Typography>
-            <Menu anchorEl={toggleSort} open={open} onClose={handleClose}>
-              <MenuItem onClick={handleClose}>Oldest</MenuItem>
-              <MenuItem onClick={handleClose}>A-Z</MenuItem>
-              <MenuItem onClick={handleClose}>Z-A</MenuItem>
+
+            {/* sort menu */}
+            <Menu
+              aria-labelledby="sort-button"
+              anchorEl={toggleSort}
+              open={open}
+              onClose={handleClose}
+              sx={{
+                "& .MuiPaper-root": {
+                  background: "#D6D5D5",
+                  boxShadow: "none",
+                  borderRadius: "2px",
+                },
+              }}
+              anchorOrigin={{
+                vertical: 22,
+                horizontal: "right",
+              }}
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+            >
+              <MenuItem onClick={selectSortCriteria}>
+                <Typography variant="body2" theme={theme} sx={{ width: 55 }}>
+                  Newest
+                </Typography>
+              </MenuItem>
+              <MenuItem onClick={selectSortCriteria}>
+                <Typography variant="body2" theme={theme}>
+                  Oldest
+                </Typography>
+              </MenuItem>
+              <MenuItem onClick={selectSortCriteria}>
+                <Typography variant="body2" theme={theme}>
+                  A-Z
+                </Typography>
+              </MenuItem>
+              <MenuItem onClick={selectSortCriteria}>
+                <Typography variant="body2" theme={theme}>
+                  Z-A
+                </Typography>
+              </MenuItem>
             </Menu>
           </Box>
         </Box>
@@ -132,9 +191,7 @@ const Portfolio = () => {
           }}
         >
           {portfolio
-            .sort((a, b) =>
-              convertDate(a.released) < convertDate(b.released) ? 1 : -1
-            )
+            .sort((a, b) => sortData(a, b))
             .map((project) => (
               <PortfolioProjects key={project._id} project={project} />
             ))}
