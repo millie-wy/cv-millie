@@ -1,4 +1,5 @@
 import { createContext, useCallback, useContext, useState } from "react";
+import { axiosInstance } from "../../config.js";
 
 export const PortfolioContext = createContext({
   fetchPortfolio: () => Promise.resolve(),
@@ -14,9 +15,7 @@ const PortfolioProvider = (props) => {
 
   const fetchPortfolio = useCallback(async () => {
     setIsLoading(true);
-    let response = await fetch("/api/project", {
-      method: "GET",
-    });
+    let response = await axiosInstance.get("/project");
     const result = await response.json();
 
     if (response.ok) {
