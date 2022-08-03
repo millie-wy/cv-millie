@@ -1,9 +1,0 @@
-###
-POST http://localhost:3001/api/admin/login
-Content-Type: application/json
-
-### 
-DELETE http://localhost:3001/api/admin/logout
-
-###
-GET http://localhost:3001/api/admin/login
