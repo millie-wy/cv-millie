@@ -4,4 +4,5 @@ node_modules
 
 **/_admin.rest
 **/_project.rest
-**/_media.rest
+**/rest
+**/data
