@@ -1,18 +1,21 @@
 import { contactEmail } from "../../server.js";
 
 export const sendEmail = async (req, res) => {
-  const name = req.body.name;
-  const email = req.body.email;
-  const message = req.body.message;
+  const { name, email, message } = req.body;
   const mail = {
     from: name,
     to: process.env.EMAIL_USER,
-    subject: "Form submission",
-    html: `<p>Name: ${name}</p>
-    <p>Email: ${email}</p>
-    <p>Message: ${message}</p>`,
+    subject: `Message from ${name}`,
+    html: `<p><b>Name:</b> ${name}</p>
+    <p><b>Email:</b> ${email}</p>
+    <p><b>Message:</b> ${message}</p>`,
   };
   contactEmail.sendMail(mail, (err) =>
-    err ? res.json({ status: "Error" }) : res.json({ status: "Message Sent" })
+    err
+      ? res.json({
+          status:
+            "Ouch! Something went wrong. <br/> Try resending or contact me on LinkedIn?",
+        })
+      : res.json({ status: "Your message has been sent!" })
   );
 };

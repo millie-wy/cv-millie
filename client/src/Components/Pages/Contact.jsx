@@ -1,31 +1,29 @@
+import {
+  FacebookRounded as Facebook,
+  GitHub,
+  LinkedIn,
+} from "@mui/icons-material";
 import { Box, Container, Typography } from "@mui/material";
 import { useTheme } from "../Contexts/ThemeContextProvider";
-import { useState } from "react";
+import ContactForm from "./Contact-elements/ContactForm";
 
 const Contact = () => {
   const { theme } = useTheme();
 
-  const [status, setStatus] = useState("Submit");
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setStatus("Sending...");
-    const { name, email, message } = e.target.elements;
-    let details = {
-      name: name.value,
-      email: email.value,
-      message: message.value,
-    };
-    let response = await fetch("http://localhost:5000/contact", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-      },
-      body: JSON.stringify(details),
-    });
-    setStatus("Submit");
-    let result = await response.json();
-    alert(result.status);
-  };
+  const links = [
+    {
+      icon: LinkedIn,
+      href: "https://www.linkedin.com/in/milliecheung/",
+    },
+    {
+      icon: GitHub,
+      href: "https://github.com/millie-wy/",
+    },
+    {
+      icon: Facebook,
+      href: "https://www.facebook.com/milliecheung/",
+    },
+  ];
 
   return (
     <Container
@@ -57,21 +55,57 @@ const Contact = () => {
         CONTACT ME
       </Typography>
 
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="name">Name:</label>
-          <input type="text" id="name" required />
-        </div>
-        <div>
-          <label htmlFor="email">Email:</label>
-          <input type="email" id="email" required />
-        </div>
-        <div>
-          <label htmlFor="message">Message:</label>
-          <textarea id="message" required />
-        </div>
-        <button type="submit">{status}</button>
-      </form>
+      <Typography
+        theme={theme}
+        variant="subtitle1"
+        textAlign="center"
+        sx={{ pt: "2rem" }}
+      >
+        Send me a message
+      </Typography>
+      <ContactForm />
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          textAlign: "center",
+        }}
+      >
+        <Typography theme={theme} variant="subtitle1">
+          Or get in touch with me on
+        </Typography>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            columnGap: "2rem",
+            mt: "1rem",
+          }}
+        >
+          {links.map((link) => (
+            <Box
+              key={link.href}
+              component="a"
+              target="_blank"
+              href={link.href}
+              rel="noopener noreferrer"
+            >
+              <Box
+                component={link.icon}
+                color="#3c3c3c"
+                fontSize="2rem"
+                sx={{
+                  "&:hover": {
+                    color: "rgb(108, 168, 202)",
+                    transform: "scale(1.25)",
+                    transition: "ease-in-out 0.25s",
+                  },
+                }}
+              />
+            </Box>
+          ))}
+        </Box>
+      </Box>
     </Container>
   );
 };
