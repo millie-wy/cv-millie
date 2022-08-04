@@ -27,7 +27,7 @@ const Portfolio = () => {
   }, [fetchPortfolio]);
 
   const selectSortCriteria = (e) => {
-    setSort(e.target.innerText);
+    setSort(e.target.innerText.trim());
     handleClose();
   };
 
@@ -44,6 +44,7 @@ const Portfolio = () => {
       ? 1
       : -1;
 
+  console.log(sort);
   return isLoading ? (
     <Container
       maxWidth={false}

@@ -49,8 +49,10 @@ const PortfolioProjects = (props) => {
             loop
             muted
             playsInline
+            poster={props.project.posterSrc || null}
             sx={{
               borderRadius: {
+                maxHeight: 187.5,
                 xs: "4px",
                 sm: "4px 0 0 0",
                 md: "4px 0 0 4px",
@@ -58,6 +60,7 @@ const PortfolioProjects = (props) => {
             }}
           >
             <source src={props.project.mediaSrc} type="video/mp4" />
+            Your browser does not support the video tag.
           </Box>
         ) : (
           <Typography

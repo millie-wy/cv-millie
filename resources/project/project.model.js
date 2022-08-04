@@ -10,6 +10,7 @@ const projectSchema = new mongoose.Schema(
     tags: [{ type: String }],
     released: { type: String },
     mediaId: { type: Schema.Types.ObjectId, required: true },
+    posterId: { type: Schema.Types.ObjectId, required: true },
   },
   {
     timestamps: true,
@@ -21,6 +22,10 @@ const projectSchema = new mongoose.Schema(
 
 projectSchema.virtual("mediaSrc").get(function () {
   return "/api/media/" + this.mediaId;
+});
+
+projectSchema.virtual("posterSrc").get(function () {
+  return "/api/media/" + this.posterId;
 });
 
 export const ProjectModel = mongoose.model("project", projectSchema);

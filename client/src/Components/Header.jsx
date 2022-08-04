@@ -58,7 +58,7 @@ const Header = () => {
           aria-controls="menu-appbar"
           aria-haspopup="true"
           onClick={anchorMenu ? handleCloseMenu : handleOpenMenu}
-          sx={{ zIndex: 98, color: fontColor }}
+          sx={{ zIndex: 999, color: fontColor }}
         >
           {anchorMenu ? <CloseRoundedIcon /> : <MenuRoundedIcon />}
         </IconButton>
@@ -69,7 +69,7 @@ const Header = () => {
           open={anchorMenu}
           onOpen={handleOpenMenu}
           onClose={handleCloseMenu}
-          sx={{ zIndex: 1 }}
+          sx={{ zIndex: 998 }}
         >
           <Box
             sx={{
