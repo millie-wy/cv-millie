@@ -1,6 +1,9 @@
-DS_Store
+# dependencies
 node_modules
+
+# misc
+DS_Store
 .env
 **/resources
-/middle.js
+middleware.js
 **/data
