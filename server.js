@@ -8,6 +8,8 @@ import { fileURLToPath } from "url";
 import { adminRouter } from "./resources/admin/index.js";
 import { mediaRouter } from "./resources/media/index.js";
 import { projectRouter } from "./resources/project/index.js";
+import { contactRouter } from "./resources/contact/contact.router.js";
+import nodemailer from "nodemailer";
 
 const app = express();
 
@@ -27,6 +29,7 @@ app.use(
 app.use("/api/admin", adminRouter);
 app.use("/api/project", projectRouter);
 app.use("/api/media", mediaRouter);
+app.use("/api/contact", contactRouter);
 
 const PORT = process.env.PORT || 8080;
 const __filename = fileURLToPath(import.meta.url);
@@ -49,3 +52,15 @@ mongoose
     });
   })
   .catch((err) => console.log(err));
+
+export const contactEmail = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PW,
+  },
+});
+
+contactEmail.verify((err) =>
+  err ? console.log(err) : console.log("Ready to send!")
+);
