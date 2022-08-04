@@ -31,7 +31,7 @@ const Home = () => {
     },
     {
       icon: Email,
-      href: "mailto:wingyan.cheung@medieinstitutet.se",
+      href: "mailto:contact.milliec@gmail.com",
     },
   ];
 
@@ -93,7 +93,6 @@ const Home = () => {
           sx={{
             position: "relative",
             textAlign: "center",
-            border: ".3rem solid #3c3c3c",
             borderRadius: "1rem",
             m: "auto",
             width: { xs: "85%", sm: "70%", md: "55%" },
@@ -102,8 +101,8 @@ const Home = () => {
         >
           <Box
             sx={{
-              background: "#fff",
-              opacity: ".6",
+              background: "rgba(255,255,255,.6)",
+              borderRadius: "4px",
               height: "100%",
               width: "100%",
               position: "absolute",
@@ -116,7 +115,7 @@ const Home = () => {
             alt="my photo"
             sx={{
               borderRadius: "20rem",
-              border: ".3rem solid #3c3c3c",
+              border: "4px solid rgba(255,255,255,.6)",
               width: "12rem",
               position: "absolute",
               top: "-6.5rem",
@@ -146,9 +145,6 @@ const Home = () => {
               things from scratch. I build webpages with a focus on responsive
               design and user experience.
             </Typography>
-            {/* <Typography theme={theme} marginY="1rem">
-            Welcome to my first little world on the Internet!
-          </Typography> */}
 
             <Box
               sx={{

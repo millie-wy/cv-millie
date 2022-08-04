@@ -105,13 +105,7 @@ const PortfolioProjects = (props) => {
           </Typography>
         </a>
 
-        <Typography
-          variant="overline"
-          theme={theme}
-          color="#D6D5D5"
-          pt=".2rem"
-          textTransform="uppercase"
-        >
+        <Typography variant="overline" theme={theme} color="#D6D5D5" pt=".2rem">
           {formatDate(props.project.released)}
         </Typography>
 
@@ -119,7 +113,7 @@ const PortfolioProjects = (props) => {
           <Typography variant="body2" theme={theme} color="#7E7D7D" py=".7rem">
             {readMore
               ? props.project.description
-              : props.project.description.substring(0, 200) + "..."}
+              : props.project.description.substring(0, 180) + "..."}
             <Typography
               variant="overline"
               theme={theme}
@@ -133,7 +127,7 @@ const PortfolioProjects = (props) => {
           </Typography>
         </Box>
         <Typography variant="overline" theme={theme} color="#D6D5D5">
-          KEYWORDS
+          Keywords
         </Typography>
         <Box
           sx={{
@@ -154,7 +148,6 @@ const PortfolioProjects = (props) => {
                 px: ".2rem",
                 borderRadius: "2.5px",
                 lineHeight: "1rem",
-                textTransform: "uppercase",
               }}
             >
               {tag}

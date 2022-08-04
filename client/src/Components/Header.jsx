@@ -27,7 +27,7 @@ const Header = () => {
 
   useEffect(() => {
     const adjustHeaderColor = () => {
-      if (window.scrollY >= 115 || anchorMenu) {
+      if (window.scrollY >= 90 || anchorMenu) {
         setBgColor("#6ca8ca");
         setFontColor("white");
       } else {
@@ -87,7 +87,7 @@ const Header = () => {
                 sx={{
                   color: "#fff",
                   fontWeight: "700",
-                  fontFamily: "Cabin",
+                  fontFamily: "Averia Sans Libre",
                   minHeight: 0,
                   display: "flex",
                   placeContent: "center",
@@ -117,7 +117,7 @@ const Header = () => {
               color: fontColor,
               fontSize: "1rem",
               fontWeight: "600",
-              fontFamily: "Cabin",
+              fontFamily: "Averia Sans Libre",
             }}
           >
             {item.label}

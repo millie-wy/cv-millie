@@ -37,16 +37,6 @@ const PortfolioProvider = (props) => {
     return date;
   };
 
-  // const fetchPortfolio = useCallback(async () => {
-  //   let response = await fetch("/api/project", {
-  //     method: "GET",
-  //   });
-  //   const ok = response.ok;
-  //   const result = await response.json();
-  //   setPortfolio(result);
-  //   return { ok, result };
-  // }, []);
-
   return (
     <PortfolioContext.Provider
       value={{ fetchPortfolio, portfolio, isLoading, convertDate }}
