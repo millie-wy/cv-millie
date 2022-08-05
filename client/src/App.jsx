@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import PortfolioProvider from "./Components/Contexts/PortfolioContextProvider";
 import ThemeProvider from "./Components/Contexts/ThemeContextProvider";
 import Layout from "./Components/Layout";
 import About from "./Components/Pages/About";
@@ -6,7 +7,6 @@ import Contact from "./Components/Pages/Contact";
 import Home from "./Components/Pages/Home";
 import NotFound from "./Components/Pages/NotFound";
 import Portfolio from "./Components/Pages/Portfolio";
-import PortfolioProvider from "./Components/Contexts/PortfolioContextProvider";
 
 const App = () => {
   return (

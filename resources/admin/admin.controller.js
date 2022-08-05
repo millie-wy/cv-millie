@@ -1,5 +1,5 @@
-import { AdminModel } from "./admin.model.js";
 import bcrypt from "bcrypt";
+import { AdminModel } from "./admin.model.js";
 
 export const signIn = async (req, res) => {
   const admin = await AdminModel.findOne({ admin: req.body.admin }).select(

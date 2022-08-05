@@ -3,6 +3,7 @@ import { Box, Container, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
 import { useTheme } from "../Contexts/ThemeContextProvider";
+import HeaderBackground from "../shared/HeaderBackground";
 import Coding from "./About-elements/Coding";
 import Cruiselines from "./About-elements/Cruiselines";
 import Friends from "./About-elements/Friends";
@@ -41,26 +42,16 @@ const About = () => {
     <Container
       maxWidth={false}
       sx={{
-        py: "4rem",
+        pt: "4rem",
         background: "#ECF1F5",
-        height: 2100,
+        height: "fit-content",
         overflow: "hidden",
         scrollBehavior: "smooth",
       }}
     >
-      {/* background color for header */}
-      <Box
-        sx={{
-          background: "#ECF1F5",
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          zIndex: -99,
-          height: "4rem",
-        }}
-      />
-      {/* main content  */}
+      <HeaderBackground />
+
+      {/* subject  */}
       <Box sx={{ textAlign: "center" }}>
         <Typography variant="h4" theme={theme} textAlign="center">
           ABOUT ME
@@ -70,13 +61,13 @@ const About = () => {
         </Typography>
         <DownArrow>
           <KeyboardDoubleArrowDownRoundedIcon
-            color="#3c3c3c"
             fontSize="large"
-            sx={{ pt: "1rem", pb: "5rem" }}
+            sx={{ pt: "1rem", pb: "5rem", color: "#6ca8ca" }}
           />
         </DownArrow>
       </Box>
 
+      {/* main content  */}
       <Box
         id="main"
         sx={{
@@ -124,6 +115,22 @@ const About = () => {
           <Tbc />
         </Box>
       </Box>
+      <a
+        href="https://www.flaticon.com/"
+        target="_blank"
+        rel="noreferrer"
+        style={{ textDecoration: "none" }}
+      >
+        <Typography
+          theme={theme}
+          fontSize=".65rem"
+          color="#D6D5D5"
+          textAlign="center"
+          sx={{ pt: "3rem", pb: "2rem" }}
+        >
+          Icons created by Flaticon
+        </Typography>
+      </a>
     </Container>
   );
 };

@@ -86,24 +86,30 @@ const PortfolioProjects = (props) => {
 
       {/* project details */}
       <Box sx={{ px: "1.2rem", py: "1rem" }}>
-        <a
-          style={{ textDecoration: "none" }}
-          target="_blank"
-          rel="noreferrer"
-          href={props.project.repo}
-        >
-          <Typography variant="body1" theme={theme} fontWeight="bold">
-            {props.project.title}
-            <OpenInNewIcon
-              fontSize="10px"
-              sx={{
-                pl: ".3rem",
-                verticalAlign: "text-bottom",
-                color: "#3c3c3c",
-              }}
-            />
-          </Typography>
-        </a>
+        <Box width="fit-content">
+          <a
+            style={{ textDecoration: "none" }}
+            target="_blank"
+            rel="noreferrer"
+            href={props.project.repo}
+          >
+            <Typography
+              variant="body1"
+              theme={theme}
+              fontWeight="bold"
+              sx={{ "&:hover": { color: "#6ca8ca" } }}
+            >
+              {props.project.title}
+              <OpenInNewIcon
+                fontSize="10px"
+                sx={{
+                  pl: ".3rem",
+                  verticalAlign: "text-bottom",
+                }}
+              />
+            </Typography>
+          </a>
+        </Box>
 
         <Typography variant="overline" theme={theme} color="#D6D5D5" pt=".2rem">
           {formatDate(props.project.released)}

@@ -1,10 +1,10 @@
 import express from "express";
+import { adminOnly } from "../../middleware.js";
 import {
   addProject,
   deleteProject,
   getProjects,
 } from "./project.controller.js";
-import { adminOnly } from "../../middleware.js";
 
 export const projectRouter = express
   .Router()

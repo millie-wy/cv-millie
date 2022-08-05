@@ -46,9 +46,9 @@ const ContactForm = () => {
   return status ? (
     <Box
       sx={{
-        background: "#fff",
+        background: "rgb(255,255,255,.9)",
         width: { xs: "80%", sm: "70%", md: 500 },
-        minWidth: 300,
+        minWidth: 220,
         maxWidth: 500,
         height: 200,
         margin: "auto",
@@ -68,9 +68,9 @@ const ContactForm = () => {
     <FormGroup
       onSubmit={formik.handleSubmit}
       sx={{
-        background: "#fff",
+        background: "rgb(255,255,255,.9)",
         width: { xs: "80%", sm: "70%", md: 500 },
-        minWidth: 300,
+        minWidth: 220,
         maxWidth: 500,
         margin: "auto",
         borderRadius: "4px",

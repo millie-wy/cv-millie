@@ -29,5 +29,5 @@ export const addMedia = async (req, res) => {
 };
 
 export const deleteMedia = () => {
-  console.log("delete media");
+  console.log("delete media"); // not working on for now as UI doesnt exist
 };

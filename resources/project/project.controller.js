@@ -2,7 +2,7 @@ import { ProjectModel } from "./project.model.js";
 
 export const getProjects = async (req, res) => {
   const projects = await ProjectModel.find({});
-  if (!projects) res.status(404).send("No Projects Found.");
+  if (!projects) return res.status(404).send("No Projects Found.");
   return res.status(200).json(projects);
 };
 
@@ -13,6 +13,6 @@ export const addProject = async (req, res) => {
 
 export const deleteProject = async (req, res) => {
   const project = await ProjectModel.findByIdAndDelete(req.params.id);
-  if (!project) res.status(404).json("Project does not exist.");
+  if (!project) return res.status(404).json("Project does not exist.");
   return res.status(200).json("Project deleted: " + req.params.id);
 };

@@ -5,11 +5,11 @@ import {
 } from "@mui/icons-material";
 import { Box, Container, Typography } from "@mui/material";
 import { useTheme } from "../Contexts/ThemeContextProvider";
+import HeaderBackground from "../shared/HeaderBackground";
 import ContactForm from "./Contact-elements/ContactForm";
 
 const Contact = () => {
   const { theme } = useTheme();
-
   const links = [
     {
       icon: LinkedIn,
@@ -33,32 +33,20 @@ const Contact = () => {
         background: "#ECF1F5",
         height: "fit-content",
         minHeight: "calc(100vh - 3.5rem)",
-        overflow: "hidden",
         scrollBehavior: "smooth",
+        textAlign: "center",
       }}
     >
-      {/* background color for header */}
-      <Box
-        sx={{
-          background: "#ECF1F5",
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          zIndex: -99,
-          height: "4rem",
-        }}
-      />
-
-      {/* subject */}
-      <Typography variant="h4" theme={theme} textAlign="center">
+      <HeaderBackground />
+      <Typography variant="h4" theme={theme}>
         CONTACT ME
       </Typography>
 
+      {/* main content  */}
       <Typography
         theme={theme}
         variant="subtitle1"
-        textAlign="center"
+        color="#7E7D7D"
         sx={{ pt: "2rem" }}
       >
         Send me a message
@@ -71,7 +59,7 @@ const Contact = () => {
           textAlign: "center",
         }}
       >
-        <Typography theme={theme} variant="subtitle1">
+        <Typography theme={theme} variant="subtitle1" color="#7E7D7D">
           Or get in touch with me on
         </Typography>
         <Box

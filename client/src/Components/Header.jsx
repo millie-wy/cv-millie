@@ -24,20 +24,23 @@ const Header = () => {
   const handleOpenMenu = () => setAnchorMenu(true);
   const [bgColor, setBgColor] = useState("transparent");
   const [fontColor, setFontColor] = useState("#3c3c3c");
+  const [hoverFontBg, setHoverFontBg] = useState("rgba(108,168,202,.2)");
 
   useEffect(() => {
     const adjustHeaderColor = () => {
-      if (window.scrollY >= 90 || anchorMenu) {
+      if (anchorMenu || window.scrollY >= 90) {
         setBgColor("#6ca8ca");
-        setFontColor("white");
+        setFontColor("#fff");
+        setHoverFontBg("rgba(255,255,255,.3)");
       } else {
         setBgColor("transparent");
         setFontColor("#3c3c3c");
+        setHoverFontBg("rgba(108,168,202,.2)");
       }
     };
     window.addEventListener("scroll", adjustHeaderColor, { passive: true });
     return () => window.removeEventListener("scroll", adjustHeaderColor);
-  });
+  }, [anchorMenu]);
 
   return (
     <AppBar
@@ -58,7 +61,13 @@ const Header = () => {
           aria-controls="menu-appbar"
           aria-haspopup="true"
           onClick={anchorMenu ? handleCloseMenu : handleOpenMenu}
-          sx={{ zIndex: 999, color: fontColor }}
+          sx={{
+            zIndex: 999,
+            color: fontColor,
+            "&:hover": {
+              background: hoverFontBg,
+            },
+          }}
         >
           {anchorMenu ? <CloseRoundedIcon /> : <MenuRoundedIcon />}
         </IconButton>
@@ -106,6 +115,7 @@ const Header = () => {
         sx={{
           display: { xs: "none", sm: "flex" },
           justifyContent: "center",
+          alignItems: "center",
         }}
       >
         {headerMenu.map((item) => (
@@ -118,6 +128,11 @@ const Header = () => {
               fontSize: "1rem",
               fontWeight: "600",
               fontFamily: "Averia Sans Libre",
+              height: "1.5rem",
+              borderRadius: "4px",
+              "&:hover": {
+                backgroundColor: hoverFontBg,
+              },
             }}
           >
             {item.label}

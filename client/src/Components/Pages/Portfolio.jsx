@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import { usePortfolio } from "../Contexts/PortfolioContextProvider";
 import { useTheme } from "../Contexts/ThemeContextProvider";
 import PortfolioProjects from "./PortfolioProjects";
+import HeaderBackground from "../shared/HeaderBackground";
 
 const Portfolio = () => {
   const { theme } = useTheme();
@@ -21,6 +22,8 @@ const Portfolio = () => {
 
   const handleClick = (e) => setToggleSort(e.currentTarget);
   const handleClose = () => setToggleSort(null);
+
+  const sortCriteria = ["Newest", "Oldest", "A-Z", "Z-A"];
 
   useEffect(() => {
     fetchPortfolio();
@@ -57,19 +60,11 @@ const Portfolio = () => {
         scrollBehavior: "smooth",
       }}
     >
-      {/* background color for header */}
-      <Box
-        sx={{
-          background: "#ECF1F5",
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          zIndex: -99,
-          height: "4rem",
-        }}
-      />
-      <CircularProgress size="2rem" color="inherit" />
+      <HeaderBackground />
+      <CircularProgress size="2rem" sx={{ color: "#3c3c3c" }} />
+      <Typography theme={theme} variant="subtitle1" pt="1rem">
+        Loading...
+      </Typography>
     </Container>
   ) : (
     <Container
@@ -83,20 +78,7 @@ const Portfolio = () => {
         scrollBehavior: "smooth",
       }}
     >
-      {/* background color for header */}
-      <Box
-        sx={{
-          background: "#ECF1F5",
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          zIndex: -99,
-          height: "4rem",
-        }}
-      />
-
-      {/* subject */}
+      <HeaderBackground />
       <Typography variant="h4" theme={theme} textAlign="center">
         MY PORTFOLIO
       </Typography>
@@ -120,69 +102,63 @@ const Portfolio = () => {
           >
             {portfolio.length} Projects
           </Typography>
-          <Box
+
+          <Typography
+            id="sort-button"
+            variant="body2"
+            theme={theme}
             sx={{
               display: "flex",
               flexDirection: "row",
-              placeItems: "center",
+              alignItems: "center",
+              cursor: "pointer",
+              height: "1rem",
+              "&:hover": { color: "#6ca8ca" },
+            }}
+            onClick={handleClick}
+          >
+            <SortRounded fontSize="small" sx={{ pr: ".3rem" }} />
+            Sort by {sort}
+          </Typography>
+
+          {/* sort menu */}
+          <Menu
+            aria-labelledby="sort-button"
+            anchorEl={toggleSort}
+            open={open}
+            onClose={handleClose}
+            sx={{
+              "& .MuiPaper-root": {
+                background: "rgb(214,213,213,.85)",
+                boxShadow: "none",
+                borderRadius: "2px",
+              },
+            }}
+            anchorOrigin={{
+              vertical: 22,
+              horizontal: "right",
+            }}
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "right",
             }}
           >
-            <SortRounded fontSize="small" />
-            <Typography
-              id="sort-button"
-              variant="body2"
-              theme={theme}
-              sx={{ pl: ".2rem", cursor: "pointer" }}
-              onClick={handleClick}
-            >
-              Sort by {sort}
-            </Typography>
-
-            {/* sort menu */}
-            <Menu
-              aria-labelledby="sort-button"
-              anchorEl={toggleSort}
-              open={open}
-              onClose={handleClose}
-              sx={{
-                "& .MuiPaper-root": {
-                  background: "#D6D5D5",
-                  boxShadow: "none",
-                  borderRadius: "2px",
-                },
-              }}
-              anchorOrigin={{
-                vertical: 22,
-                horizontal: "right",
-              }}
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-            >
-              <MenuItem onClick={selectSortCriteria}>
-                <Typography variant="body2" theme={theme} sx={{ width: 55 }}>
-                  Newest
+            {sortCriteria.map((criteria) => (
+              <MenuItem
+                key={criteria}
+                onClick={selectSortCriteria}
+                sx={{
+                  minHeight: "30px",
+                }}
+              >
+                <Typography variant="body2" theme={theme} sx={{ width: 65 }}>
+                  {criteria}
                 </Typography>
               </MenuItem>
-              <MenuItem onClick={selectSortCriteria}>
-                <Typography variant="body2" theme={theme}>
-                  Oldest
-                </Typography>
-              </MenuItem>
-              <MenuItem onClick={selectSortCriteria}>
-                <Typography variant="body2" theme={theme}>
-                  A-Z
-                </Typography>
-              </MenuItem>
-              <MenuItem onClick={selectSortCriteria}>
-                <Typography variant="body2" theme={theme}>
-                  Z-A
-                </Typography>
-              </MenuItem>
-            </Menu>
-          </Box>
+            ))}
+          </Menu>
         </Box>
+
         <Box
           sx={{
             display: "flex",

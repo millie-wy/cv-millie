@@ -33,7 +33,6 @@ const PortfolioProvider = (props) => {
     date.setMonth(month - 1);
     date.setFullYear(year);
     date.setDate(1);
-
     return date;
   };
 

@@ -19,12 +19,10 @@ const Cruiselines = () => {
   useEffect(() => {
     const updateCruiseLeft = () => {
       const y = window.scrollY;
-
       const parent = document.getElementById("cruise-div");
       const aniDiv = document.getElementById("cruise-ani-div");
       const scrollPercent = Math.min(1, (y - 550) / parent.clientHeight);
       let speed = 0.3;
-
       let left = scrollPercent * aniDiv.clientWidth * speed;
 
       if (scrollPercent > 0) setCruiseLeft(left);

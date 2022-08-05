@@ -1,5 +1,5 @@
 {
-  "name": "cv-millie-server",
+  "name": "cv-millie",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -16,7 +16,7 @@
     "develop": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix client\"",
     "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix client\""
   },
-  "author": "",
+  "author": "Millie Cheung",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",

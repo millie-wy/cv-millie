@@ -1,7 +1,7 @@
 import express from "express";
 import multer from "multer";
-import { addMedia, deleteMedia, getMedia } from "./media.controller.js";
 import { adminOnly } from "../../middleware.js";
+import { addMedia, deleteMedia, getMedia } from "./media.controller.js";
 
 const upload = multer();
 

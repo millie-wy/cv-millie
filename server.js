@@ -3,13 +3,13 @@ import cors from "cors";
 import "dotenv/config";
 import express from "express";
 import mongoose from "mongoose";
+import nodemailer from "nodemailer";
 import path from "path";
 import { fileURLToPath } from "url";
 import { adminRouter } from "./resources/admin/index.js";
+import { contactRouter } from "./resources/contact/contact.router.js";
 import { mediaRouter } from "./resources/media/index.js";
 import { projectRouter } from "./resources/project/index.js";
-import { contactRouter } from "./resources/contact/contact.router.js";
-import nodemailer from "nodemailer";
 
 const app = express();
 
@@ -62,5 +62,5 @@ export const contactEmail = nodemailer.createTransport({
 });
 
 contactEmail.verify((err) =>
-  err ? console.log(err) : console.log("Ready to send!")
+  err ? console.log(err) : console.log("Nodemailer is on")
 );
