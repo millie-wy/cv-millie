@@ -19,19 +19,22 @@ const Home = () => {
   const links = [
     {
       icon: LinkedIn,
+      target: "_blank",
       href: "https://www.linkedin.com/in/milliecheung/",
     },
     {
       icon: GitHub,
+      target: "_blank",
       href: "https://github.com/millie-wy/",
     },
     {
       icon: Facebook,
+      target: "_blank",
       href: "https://www.facebook.com/milliecheung/",
     },
     {
       icon: Email,
-      href: "mailto:contact.milliec@gmail.com",
+      href: "/contact",
     },
   ];
 
@@ -158,7 +161,7 @@ const Home = () => {
                 <Box
                   key={link.href}
                   component="a"
-                  target="_blank"
+                  target={link.target}
                   href={link.href}
                   rel="noopener noreferrer"
                 >
