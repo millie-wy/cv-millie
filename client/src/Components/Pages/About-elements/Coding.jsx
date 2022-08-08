@@ -61,7 +61,7 @@ const Coding = () => {
         }}
       >
         Began my full-time study in Front-end Development, and expected to
-        graduate in 2022
+        graduate in 2023
       </Typography>
     </Box>
   );
