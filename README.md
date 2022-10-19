@@ -4,4 +4,4 @@ A new version of my digital CV, which is a full stack MERN application. Compared
 
 This project was built with ReactJS, MUI and Formik in the frontend, and Express, NodeJS, MongoDB, Mongoose, Multer and Nodemailer in the backend.
 
-Link: https://cv-millie.herokuapp.com/
+Link: https://milliecheung.herokuapp.com/
