@@ -149,6 +149,13 @@ const Home = () => {
               design and user experience.
             </Typography>
 
+            <Typography variant="body2" theme={theme} mt={2} fontWeight={500}>
+              JavaScript | TypeScript | HTML | CSS
+            </Typography>
+            <Typography variant="body2" theme={theme} fontWeight={500}>
+              React | Next.js | Node | REST API | MongoDB | MUI | Mantine
+            </Typography>
+
             <Box
               sx={{
                 display: "flex",
