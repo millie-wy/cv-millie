@@ -35,7 +35,7 @@ const Tbc = () => {
           top: 12,
         }}
       />
-      <Typography variant="subtitle1" theme={theme}>
+      <Typography variant="subtitle1" theme={theme} sx={{ mt: 1 }}>
         TO BE CONTINUED
       </Typography>
     </Box>

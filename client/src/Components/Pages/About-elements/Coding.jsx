@@ -49,7 +49,7 @@ const Coding = () => {
         }}
       />
       <Typography variant="subtitle1" theme={theme}>
-        2021
+        2021 to 2023
       </Typography>
       <Typography
         variant="body1"
@@ -60,8 +60,8 @@ const Coding = () => {
           pt: ".2rem",
         }}
       >
-        Began my full-time study in Front-end Development, and expected to
-        graduate in 2023
+        Studied full-time in Front-end Development and completed 2 internships
+        at H5 Förnyelsebyrå and Volvo Cars
       </Typography>
     </Box>
   );

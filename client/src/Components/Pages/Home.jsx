@@ -84,7 +84,7 @@ const Home = () => {
             top: 0,
             left: 0,
             zIndex: -99,
-            opacity: "0.75",
+            opacity: 0.6,
             objectFit: "cover",
             width: "100vw",
             height: "100vh",
@@ -130,7 +130,6 @@ const Home = () => {
             <Typography variant="h4" theme={theme} marginBottom="1rem">
               Millie Cheung
             </Typography>
-
             <Typography variant="body1" theme={theme}>
               A{" "}
               <span
@@ -142,18 +141,23 @@ const Home = () => {
                   animation: "shine 1s linear infinite",
                 }}
               >
-                front-end developer student
+                front-end developer
               </span>{" "}
-              based in Gothenburg, Sweden, with a strong passion for building
-              things from scratch. I build webpages with a focus on responsive
-              design and user experience.
+              based in Gothenburg Sweden, with a passion for creating beautiful
+              and functional websites to ensure a seamless user experience
+              across all devices.
             </Typography>
-
-            <Typography variant="body2" theme={theme} mt={2} fontWeight={500}>
+            <Typography variant="body1" theme={theme} mt={2} fontWeight={500}>
               JavaScript | TypeScript | HTML | CSS
             </Typography>
             <Typography variant="body2" theme={theme} fontWeight={500}>
-              React | Next.js | Node | REST API | MongoDB | MUI | Mantine
+              React | Next.js | Node.js | REST
+            </Typography>
+            <Typography variant="body2" theme={theme} fontWeight={500}>
+              MongoDB | Firebase | Cypress | MUI
+            </Typography>
+            <Typography variant="body2" theme={theme} fontWeight={500}>
+              UX Design | SEO
             </Typography>
 
             <Box
@@ -191,10 +195,10 @@ const Home = () => {
 
           <Typography
             theme={theme}
-            fontSize=".65rem"
+            fontSize=".6rem"
             color="#fff"
             sx={{
-              opacity: ".7",
+              opacity: 0.5,
               position: "absolute",
               bottom: "-1.2rem",
               left: "50%",

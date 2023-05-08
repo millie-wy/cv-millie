@@ -16,7 +16,7 @@ const Footer = () => {
       }}
     >
       <Typography theme={theme} variant="overline">
-        Millie Cheung © 2022. All rights reserved.
+        Millie Cheung © 2023. All rights reserved.
       </Typography>
     </Container>
   );
